@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="bangla" lang="en">
+    <html lang="en">
       <body className={inter.className}>
         <NextUIProvider>{children}</NextUIProvider>
       </body>

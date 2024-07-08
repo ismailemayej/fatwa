@@ -1,19 +1,25 @@
-import Container from "@/components/container";
-import { Get } from "@/components/DataAction/DataHandle";
-import LeftSide from "@/components/LeftSide";
-import MainSlider from "@/components/MainSlider";
 import Navbar from "@/components/navbar/navbar";
-import PostCard from "@/components/PostCard";
+import type { Metadata } from "next";
+import Container from "@/components/container";
+import LeftSide from "@/components/LeftSide";
 import RightSide from "@/components/RightSide";
-import { PostTabs } from "@/components/Tabs/PostTabs";
 import { ScrollShadow } from "@nextui-org/react";
+import MainSlider from "@/components/MainSlider";
+import { DetailsTabs } from "@/components/Tabs/DetailsTabs";
+export const metadata: Metadata = {
+  title: "Fatwa in Bangla",
+  description: "Bangla Fatwa knowlage",
+};
 
-export default async function Home() {
-  const data = await Get("ans");
+export default function DatailsLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <>
       <Navbar />
-      <MainSlider data={data} />
+      <MainSlider />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
           <LeftSide />
@@ -23,14 +29,8 @@ export default async function Home() {
             orientation="horizontal"
             className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
           >
-            <PostTabs data={data} />
-            {data?.data.map((ans: any) => (
-              <>
-                <span className="lg:block hidden">
-                  <PostCard key={ans._id} data={ans} />
-                </span>
-              </>
-            ))}
+            <DetailsTabs data={children} />
+            <span className="lg:block hidden"> {children}</span>
           </ScrollShadow>
           <RightSide />
         </div>

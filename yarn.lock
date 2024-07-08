@@ -597,7 +597,7 @@
     "@nextui-org/react-utils" "2.0.14"
     "@nextui-org/shared-utils" "2.0.5"
 
-"@nextui-org/breadcrumbs@2.0.10":
+"@nextui-org/breadcrumbs@2.0.10", "@nextui-org/breadcrumbs@^2.0.10":
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@nextui-org/breadcrumbs/-/breadcrumbs-2.0.10.tgz#e301a35c15f8d2e39929d9e4020b5742fc113e15"
   integrity sha512-TCrOHCH/gNrPwEQyd30mu6Y9x/ojJk3vUWZJSPuVhzG6WdpUFyqen4QCoDTUTvFJBL3TwqNYwOIxooizzFSK7g==
@@ -611,7 +611,7 @@
     "@react-types/breadcrumbs" "3.7.5"
     "@react-types/shared" "3.23.1"
 
-"@nextui-org/button@2.0.34":
+"@nextui-org/button@2.0.34", "@nextui-org/button@^2.0.34":
   version "2.0.34"
   resolved "https://registry.yarnpkg.com/@nextui-org/button/-/button-2.0.34.tgz#0621aec4dec1c4ec3e8d091f71ba7b86b02f4c19"
   integrity sha512-VeFpOs7trX6u6FqeGr0XCpuNqPhXTLqsmt4iaygvheZCbzrTKvWHd4QMqSh2CPsNH8UFUBSFJjr3oaf3a0SYWQ==
@@ -873,7 +873,7 @@
     "@react-types/menu" "3.9.9"
     "@react-types/shared" "3.23.1"
 
-"@nextui-org/modal@2.0.36":
+"@nextui-org/modal@2.0.36", "@nextui-org/modal@^2.0.36":
   version "2.0.36"
   resolved "https://registry.yarnpkg.com/@nextui-org/modal/-/modal-2.0.36.tgz#39f52fa39ed605c8631efb98991cf7073c2c0cc4"
   integrity sha512-ucWBobeoM8BVLpgXrtZ/H5TD9eFS2YF4W7vntWC05Q13A34LSHgBjNHJkfwW/OebGjJoaDoRiIBohWaiyyliTA==
