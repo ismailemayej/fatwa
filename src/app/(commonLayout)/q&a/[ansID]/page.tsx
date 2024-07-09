@@ -1,6 +1,7 @@
 import DetailsCard from "@/components/DetailsCard";
 import React from "react";
 import { useRouter } from "next/router";
+import RecentPost from "@/components/MostRecent/RecentPost";
 
 const Details = async ({ params }: any) => {
   const target = "ans" || "trending";
@@ -8,6 +9,11 @@ const Details = async ({ params }: any) => {
     cache: "no-store",
   });
   const data = await res.json();
-  return <DetailsCard data={data} />;
+  return (
+    <div>
+      <DetailsCard data={data} />
+      <RecentPost />
+    </div>
+  );
 };
 export default Details;

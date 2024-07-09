@@ -78,7 +78,7 @@ function TypingHeadings({ headings }: any) {
   }, [typingMode, updateTypingModeTimer]);
 
   return (
-    <div className="mb-4 text-3xl font-bold text-neutrals-50 md:text-4xl">
+    <div className="mb-4 text-3xl font-bold  text-white md:text-4xl">
       <h2 className="sr-only">{currentHeading}</h2>
       <AnimatePresence mode="wait">
         <motion.h2

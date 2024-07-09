@@ -1,14 +1,33 @@
 import React from "react";
-import ModalCommon from "../Modal/Modal";
+import { Input } from "@nextui-org/react";
+import PostEditor from "./Editor";
+import { useForm } from "react-hook-form";
 
 const AskQuestion = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => console.log(data);
+
   return (
-    <div>
-      <p>
-        <ModalCommon />
-      </p>
-      This is Question page
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="text-2xl font-semibold">Ask Question</h2>
+      <Input
+        {...register("headline", { required: true })}
+        type="text"
+        className="mx-auto my-3 outline-none"
+        variant="bordered"
+        label="headline"
+      />
+      {errors.headline && <p className="text-red-500">Headline is required.</p>}
+      <PostEditor />
+      <button type="submit" className="btn btn-primary mt-4">
+        Submit
+      </button>
+    </form>
   );
 };
 

@@ -4,6 +4,7 @@ import Container from "@/components/container";
 import LeftSide from "@/components/LeftSide";
 import RightSide from "@/components/RightSide";
 import { ScrollShadow } from "@nextui-org/react";
+import MainSlider from "@/components/mainSlider/MainSlider";
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
   description: "Bangla Fatwa knowlage",
@@ -16,7 +17,7 @@ export default function AskLayout({
 }>) {
   return (
     <>
-      <Navbar />
+      <MainSlider />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
           <LeftSide />

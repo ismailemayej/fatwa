@@ -1,6 +1,12 @@
+import AskQuestion from "@/components/AskQuestion/AskQuestion";
 import React from "react";
 
-const AskPage = () => {
-  return <div>THis is ask page</div>;
+const AskQuestionPage = () => {
+  return (
+    <div>
+      <AskQuestion />
+    </div>
+  );
 };
-export default AskPage;
+
+export default AskQuestionPage;

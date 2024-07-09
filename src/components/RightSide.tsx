@@ -4,6 +4,7 @@ import React from "react";
 import Trending from "./trendingQ&A/Trending";
 import TotalPost from "./totalPost.tsx/TotalPost";
 import Advisement from "./advisement/Advisement";
+import Tags from "./tags/Tags";
 
 const RightSide = () => {
   return (
@@ -16,6 +17,7 @@ const RightSide = () => {
       <Trending />
       <TotalPost />
       <Advisement />
+      <Tags />
     </div>
   );
 };

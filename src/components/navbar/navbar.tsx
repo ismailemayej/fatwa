@@ -10,7 +10,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className=" text-white lg:px-0 px-2 py-2  bg-gray-900 w-full z-20 top-0 start-0 border-green-700 lg:border-b-8 border-b-4">
+      <nav className=" absolute bg-[#05000f2a]  text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex">
             <button
@@ -81,15 +81,17 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            প্রশ্ন
-          </button>
+          <Link href="/login">
+            <button
+              type="button"
+              className="text-white border-1 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Login or Registration
+            </button>
+          </Link>
         </div>
       </nav>
-      {isOpen && <Menu />}
+      <span className=" flex justify-start"> {isOpen && <Menu />}</span>
     </>
   );
 }

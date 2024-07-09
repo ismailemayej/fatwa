@@ -1,7 +1,8 @@
 import Container from "@/components/container";
 import { Get } from "@/components/DataAction/DataHandle";
+import Footer from "@/components/Footer/Footer";
 import LeftSide from "@/components/LeftSide";
-import MainSlider from "@/components/MainSlider";
+import MainSlider from "@/components/mainSlider/MainSlider";
 import Navbar from "@/components/navbar/navbar";
 import PostCard from "@/components/PostCard";
 import RightSide from "@/components/RightSide";
@@ -12,7 +13,6 @@ export default async function Home() {
   const data = await Get("ans");
   return (
     <>
-      <Navbar />
       <MainSlider data={data} />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
@@ -35,6 +35,7 @@ export default async function Home() {
           <RightSide />
         </div>
       </Container>
+      <Footer />
     </>
   );
 }

@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 
 export default function PostCard({ data }: any) {
-  const { qn, question, ans, proof, time, date } = data;
+  const { qn, question, ans, proof, time, date, headline, _id } = data;
   return (
     <Card className="max-w-full mb-1.5 bangla">
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
@@ -21,11 +21,12 @@ export default function PostCard({ data }: any) {
         <div className=" flex flex-col w-10/12 text-blue-700">
           <div className="font-semibold text-ellipsis">
             <Link
+              key={_id}
               className="text-lg font-bold lg:text-xl bangla"
               href={`/q&a/${qn}`}
             >
               <h3 className="font-semibold overflow-hidden text-ellipsis line-clamp-2">
-                {question}
+                {headline ? headline : question}
               </h3>
             </Link>
             <div className="flex gap-3 text-black">

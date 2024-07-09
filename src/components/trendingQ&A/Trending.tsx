@@ -1,6 +1,6 @@
 import React from "react";
 import { Get } from "../DataAction/DataHandle";
-import { Card, CardHeader, Divider } from "@nextui-org/react";
+import { Card, Divider } from "@nextui-org/react";
 import Link from "next/link";
 
 const Trending = async () => {
@@ -16,7 +16,7 @@ const Trending = async () => {
               className="bangla px-2 py-1 hover:text-blue-600 hover:font-semibold"
               key={item._id}
             >
-              {item.question}
+              {item?.headline ? item?.headline : item?.question}
             </div>
             <Divider />
           </Link>
