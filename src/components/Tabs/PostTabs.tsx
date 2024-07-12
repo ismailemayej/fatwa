@@ -4,7 +4,6 @@ import Trending from "../trendingQ&A/Trending";
 import TotalPost from "../totalPost.tsx/TotalPost";
 import Tags from "../tags/Tags";
 import Advisement from "../advisement/Advisement";
-import AskQuestion from "../AskQuestion/AskQuestion";
 export function PostTabs({ data }: any) {
   return (
     <Tabs defaultValue="account" className=" w-full lg:hidden block">
@@ -25,13 +24,11 @@ export function PostTabs({ data }: any) {
         <Tags />
       </TabsContent>
       <TabsContent value="account">
-        {data.data.map((ans: any) => (
+        {data?.data?.map((ans: any) => (
           <PostCard data={ans} />
         ))}
       </TabsContent>
-      <TabsContent value="askquestion">
-        <AskQuestion />
-      </TabsContent>
+      <TabsContent value="askquestion">{/* <AskQuestion /> */}</TabsContent>
     </Tabs>
   );
 }

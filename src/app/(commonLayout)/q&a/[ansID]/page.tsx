@@ -1,6 +1,5 @@
 import DetailsCard from "@/components/DetailsCard";
 import React from "react";
-import { useRouter } from "next/router";
 import RecentPost from "@/components/MostRecent/RecentPost";
 
 const Details = async ({ params }: any) => {
@@ -8,7 +7,9 @@ const Details = async ({ params }: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${target}/${params.ansID}`, {
     cache: "no-store",
   });
+
   const data = await res.json();
+
   return (
     <div>
       <DetailsCard data={data} />

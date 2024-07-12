@@ -3,14 +3,12 @@ import { Get } from "@/components/DataAction/DataHandle";
 import Footer from "@/components/Footer/Footer";
 import LeftSide from "@/components/LeftSide";
 import MainSlider from "@/components/mainSlider/MainSlider";
-import Navbar from "@/components/navbar/navbar";
 import PostCard from "@/components/PostCard";
 import RightSide from "@/components/RightSide";
 import { PostTabs } from "@/components/Tabs/PostTabs";
 import { ScrollShadow } from "@nextui-org/react";
-
 export default async function Home() {
-  const data = await Get("ans");
+  const data = await Get("ans", "approve=true");
   return (
     <>
       <MainSlider data={data} />

@@ -61,15 +61,15 @@ export const BackgroundSlider = React.memo(
     return (
       <div
         className={cn(
-          "absolute w-full [mask-size:60px] z-0 [mask-repeat:no-repeat] flex items-center justify-center",
+          "absolute w-[102%] h-[100%] z-0 [mask-repeat:no-repeat] flex items-center justify-center",
           className
         )}
       >
         <Image
           src={slider}
-          className="w-full lg:h-[24rem] h-[16rem]"
+          className="w-full lg:h-[26rem] h-[18rem]"
           height={600}
-          width={600}
+          width={1000}
           alt="slider"
         />
 
@@ -86,7 +86,7 @@ export const BackgroundSlider = React.memo(
             d={path}
             stroke={`url(#linearGradient-${index})`}
             strokeOpacity="0.4"
-            strokeWidth="0.5"
+            strokeWidth="0.0"
           ></motion.path>
         ))}
         <div>

@@ -1,3 +1,6 @@
+import { authOptions } from "@/lib/authOptions";
+import { getServerSession } from "next-auth/next";
+
 //  post mehtod
 export const Post = async (data: any, name: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}`, {
@@ -11,8 +14,8 @@ export const Post = async (data: any, name: any) => {
   return res.json();
 };
 //  Get mehtod
-export const Get = async (name: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}`, {
+export const Get = async (name: any, querydata: any) => {
+  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -51,4 +54,9 @@ export const Delete = async (id: any, name: any) => {
   }
 
   return res.json();
+};
+// get user information
+export const UserInfo = async () => {
+  const session = await getServerSession(authOptions);
+  return session?.user;
 };

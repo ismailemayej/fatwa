@@ -2,15 +2,15 @@ import React from "react";
 import { Get } from "../DataAction/DataHandle";
 import { Card, CardHeader, Divider } from "@nextui-org/react";
 import Link from "next/link";
-
 const RecentPost = async () => {
   const RecentData = await Get("recent-posts");
+  const data = RecentData?.data?.filter((item: any) => item.approve === true);
 
   return (
     <Card className="my-1">
       <div className="bg-slate-100 px-2 text-center py-1">Recent Question</div>
       <div className="mt-1 pt-2">
-        {RecentData?.data?.map((item: any) => (
+        {data?.map((item: any) => (
           <>
             <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
               <div className=" bg-green-200 rounded-xl w-2/12 text-black  flex flex-col p-2 items-center ">
