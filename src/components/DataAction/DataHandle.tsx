@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 
 //  post mehtod
 export const Post = async (data: any, name: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}`, {
+  const res = await fetch(`http://localhost:5000/api/v1/${name}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

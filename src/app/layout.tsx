@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
-
+import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
@@ -17,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextUIProvider>{children}</NextUIProvider>
+        <NextUIProvider>
+          <Toaster />
+          {children}
+        </NextUIProvider>
       </body>
     </html>
   );
