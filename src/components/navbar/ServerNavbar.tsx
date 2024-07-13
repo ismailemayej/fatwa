@@ -2,7 +2,9 @@
 import { useState } from "react";
 import Menu from "../menu/menu";
 import Link from "next/link";
-export default function ServerNavbar() {
+import { Button } from "@nextui-org/button";
+import { signOut } from "next-auth/react";
+export default function ServerNavbar({ user }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -80,15 +82,20 @@ export default function ServerNavbar() {
               </li>
             </ul>
           </div>
-
-          <Link href="/login">
-            <button
-              type="button"
-              className="text-white border-1 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Login or Registration
-            </button>
-          </Link>
+          {user?.email ? (
+            <Button color="primary" onClick={() => signOut()}>
+              LogOut
+            </Button>
+          ) : (
+            <Link href="/login">
+              <button
+                type="button"
+                className="text-white border-1 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Login or Registration
+              </button>
+            </Link>
+          )}
         </div>
       </nav>
       <span className=" flex justify-start"> {isOpen && <Menu />}</span>

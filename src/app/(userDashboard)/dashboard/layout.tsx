@@ -1,6 +1,5 @@
+import UserMenu from "@/components/DashbordMenu/UserMenu";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "User Dashboard",
@@ -12,5 +11,12 @@ export default function UserLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div>{children}</div>;
+  return (
+    <div className="lg:grid lg:grid-cols-12 lg:gap-2 m-2">
+      <div className=" lg:col-span-2 lg:block hidden">
+        <UserMenu />
+      </div>
+      <div className=" col-span-10">{children}</div>
+    </div>
+  );
 }

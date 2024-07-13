@@ -42,9 +42,12 @@ const LoginPage = () => {
           >
             Register
           </Link>
-          <Divider />
-          <div className="flex items-center gap-2 my-3">
-            Social Connect:
+          <span className="relative flex justify-center">
+            <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"></div>
+
+            <span className="relative z-10 bg-white px-6">Or</span>
+          </span>
+          <div className="flex items-center gap-2 my-3 justify-center">
             <button
               className=" rounded-full p-1"
               onClick={() =>

@@ -1,6 +1,6 @@
+"use client";
+import { toast } from "sonner";
 import React from "react";
-import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
-
 import {
   Card,
   CardHeader,
@@ -8,9 +8,30 @@ import {
   CardFooter,
   Divider,
 } from "@nextui-org/react";
-
+import { ThumbsUp } from "lucide-react";
 const DetailsCard = ({ data }: any) => {
-  const { qn, question, ans, proof, time, date } = data;
+  const { qn, question, ans, proof, time, date, likes } = data;
+
+  const handleLike = async (qn: number) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/v1/ans/${qn}/like`,
+        {
+          method: "POST",
+        }
+      );
+      const data = await response.json();
+      if (data.status) {
+        // Update the like count in the state or re-fetch the question data
+        toast.success(`Likes submited ${likes}`);
+      } else {
+        console.error("Error liking question:", data.message);
+      }
+    } catch (error) {
+      console.error("Error liking question:", error);
+    }
+  };
+
   return (
     <Card className="max-w-full mb-1.5">
       <CardHeader className="bg-[#f8f8f8] bangla">
@@ -21,18 +42,6 @@ const DetailsCard = ({ data }: any) => {
             <span className=" text-sm">সময়:{time}</span>
           </div>
         </div>
-
-        <Breadcrumbs>
-          <BreadcrumbItem href="/docs/components/button">Button</BreadcrumbItem>
-          <BreadcrumbItem href="/docs/components/breadcrumbs">
-            Breadcrumbs
-          </BreadcrumbItem>
-          <BreadcrumbItem href="/docs/components/card">Card</BreadcrumbItem>
-          <BreadcrumbItem href="/docs/components/checkbox">
-            Checkbox
-          </BreadcrumbItem>
-          <BreadcrumbItem href="/docs/components/code">Code</BreadcrumbItem>
-        </Breadcrumbs>
       </CardHeader>
       <Divider />
       <CardBody className="">
@@ -44,6 +53,21 @@ const DetailsCard = ({ data }: any) => {
           <span className="font-semibold text-black">সূত্র:</span>
           <span>{proof}</span>
         </p>
+      </CardFooter>
+      <CardFooter className="bangla flex gap text-green-900">
+        <button
+          onClick={() => handleLike(qn)}
+          className=" bg-slate-500 hover:bg-slate-50 hover:border-1 hover:text-black hover:border-black hover:transition-all  py-1 rounded-xl text-sm px-6 flex gap-1 items-center text-white"
+        >
+          <ThumbsUp /> {likes}
+        </button>
+      </CardFooter>
+      <CardFooter className="bangla flex gap text-green-900">
+        {}
+        <button
+          onClick={() => handleLike(qn)}
+          className=" bg-slate-500 hover:bg-slate-50 hover:border-1 hover:text-black hover:border-black hover:transition-all  py-1 rounded-xl text-sm px-6 flex gap-1 items-center text-white"
+        ></button>
       </CardFooter>
     </Card>
   );
