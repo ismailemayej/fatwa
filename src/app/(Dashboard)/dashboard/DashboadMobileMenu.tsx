@@ -16,24 +16,30 @@ export function DashboardMobileMenu({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-white lg:hidden block">
+    <div className="lg:hidden block">
       <Sheet>
         <SheetTrigger asChild>
-          <button className="bg-foreground-300">
-            <ListCollapseIcon />{" "}
+          <button className="">
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className=" bg-white">
+        <SheetContent side="left" className=" w-60 bg-sky-700 text-white">
           {children}
-          {/* <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-            <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
-            </SheetDescription>
-          </SheetHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">Check</div>
-          </div> */}
+
           <SheetFooter>
             <SheetClose asChild>
               <Button type="submit">Close menu</Button>

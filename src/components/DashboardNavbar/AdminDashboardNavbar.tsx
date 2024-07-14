@@ -1,21 +1,18 @@
 "use client";
-import { useState } from "react";
-import Menu from "../menu/menu";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import { signOut } from "next-auth/react";
-import { HomeMobileMenu } from "../HomeMenu/HomeMobileMenu";
-export default function ServerNavbar({ user }: any) {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
+import { DashboardMobileMenu } from "@/app/(Dashboard)/dashboard/DashboadMobileMenu";
+import AdminMenu from "../DashbordMenu/AdminMenu";
+export default function AdminDashboardNavbar({ user }: any) {
   return (
     <>
-      <nav className="absolute bg-[#05000f2a]  text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
+      <div className="bg-sky-700  text-white lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
-          <div className="lg:flex-none flex">
-            <HomeMobileMenu />
+          <div className="lg:flex-none flex items-center gap-2">
+            <DashboardMobileMenu>
+              <AdminMenu />
+            </DashboardMobileMenu>
             <Link href="/" className="flex items-center space-x-3">
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Fatwa
@@ -63,23 +60,11 @@ export default function ServerNavbar({ user }: any) {
               </li>
             </ul>
           </div>
-          {user?.email ? (
-            <Button color="primary" onClick={() => signOut()}>
-              LogOut
-            </Button>
-          ) : (
-            <Link href="/login">
-              <button
-                type="button"
-                className="text-white border-1 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Login or Registration
-              </button>
-            </Link>
-          )}
+          <Button color="primary" onClick={() => signOut()}>
+            LogOut
+          </Button>
         </div>
-      </nav>
-      <span className=" flex justify-start"> {isOpen && <Menu />}</span>
+      </div>
     </>
   );
 }
