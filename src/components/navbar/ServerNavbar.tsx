@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import Menu from "../menu/menu";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import { signOut } from "next-auth/react";
@@ -24,8 +22,7 @@ export default function ServerNavbar({ user }: any) {
                 <li className="my-1">
                   <Link
                     href={item.link}
-                    className=" text-white hover:border-b-3 hover:border-yellow-600 hover:px-1 hover:transition-all hover:scale-95"
-                    aria-current="page"
+                    className="flex items-center gap-2 hover:border-s-[4px] hover:border-blue-100 hover:transition-all hover:scale-60 py-3 hover:pl-2 hover:text-white"
                   >
                     <span className="text-sm font-medium">{item.name}</span>
                   </Link>
