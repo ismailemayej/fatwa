@@ -20,7 +20,7 @@ export const UserMenuItem = [
 ];
 export const AdminMenuItem = [
   { link: "/dashboard/admin", icon: <LayoutDashboard />, name: "Admin" },
-  { link: "/dashboard/admin", icon: <LoaderCircle />, name: "Pending" },
+  { link: "/dashboard/admin/pending", icon: <LoaderCircle />, name: "Pending" },
   { link: "/", icon: <LayoutDashboard />, name: "Dashboard" },
   { link: "/", icon: <LayoutDashboard />, name: "Dashboard" },
 ];

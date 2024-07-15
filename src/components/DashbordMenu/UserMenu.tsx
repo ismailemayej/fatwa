@@ -7,7 +7,7 @@ const UserMenu = ({ user }: any) => {
     <div>
       <ul>
         <span className=" lg:hidden block">
-          <p>Main Menu</p>
+          <p className="text-white pl-2 font-bold">Main Menu</p>
           <hr />
           {MainMenuItem.map((item) => (
             <li className="my-1">
@@ -21,13 +21,13 @@ const UserMenu = ({ user }: any) => {
             </li>
           ))}
         </span>
-        <p>User Dashboard</p>
+        <p className="text-white pl-2 font-bold">User Dashboard</p>
         <hr />
         {UserMenuItem.map((item) => (
           <li className="my-1">
             <Link
               href={item.link}
-              className="flex items-center gap-2 hover:border-s-[3px] hover:border-blue-500 hover:bg-blue-100 px-4 py-3 hover:text-blue-700"
+              className="flex items-center gap-2 hover:border-s-[3px] hover:border-blue-200 hover:transition-all hover:text-white hover:px-5 px-3 py-3"
             >
               {item.icon}
               <span className="text-sm font-medium">{item.name}</span>

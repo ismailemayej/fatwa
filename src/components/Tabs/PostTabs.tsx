@@ -4,7 +4,13 @@ import Trending from "../trendingQ&A/Trending";
 import TotalPost from "../totalPost.tsx/TotalPost";
 import Tags from "../tags/Tags";
 import Advisement from "../advisement/Advisement";
-export function PostTabs({ data }: any) {
+import AskQuestion from "../AskQuestion/AskQuestion";
+import { Get, UserInfo } from "../DataAction/DataHandle";
+export async function PostTabs({ data }: any) {
+  const allLength = await Get("ans", "");
+  const length = allLength?.data;
+  const mail = await UserInfo();
+
   return (
     <Tabs defaultValue="account" className=" w-full lg:hidden block">
       <TabsList className="">
@@ -28,7 +34,9 @@ export function PostTabs({ data }: any) {
           <PostCard data={ans} />
         ))}
       </TabsContent>
-      <TabsContent value="askquestion">{/* <AskQuestion /> */}</TabsContent>
+      <TabsContent value="askquestion">
+        <AskQuestion lengthData={length.length} useremail={mail?.email} />
+      </TabsContent>
     </Tabs>
   );
 }

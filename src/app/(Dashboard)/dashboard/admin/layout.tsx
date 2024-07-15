@@ -11,8 +11,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="lg:grid lg:grid-cols-12  bg-slate-200">
-      <div className=" bg-sky-700 text-white p-2 h-screen lg:col-span-2 lg:block hidden">
+    <div className="lg:grid lg:grid-cols-12  bg-[#eeebeb]">
+      <div className=" bg-[#405189] text-[#c4c6cc] p-2 h-screen lg:col-span-2 lg:block hidden">
         <AdminMenu />
       </div>
       <div className=" col-span-10">

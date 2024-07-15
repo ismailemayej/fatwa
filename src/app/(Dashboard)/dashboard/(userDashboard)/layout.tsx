@@ -12,7 +12,7 @@ export default function UserLayout({
 }>) {
   return (
     <div className="lg:grid lg:grid-cols-12 s bg-slate-200">
-      <div className=" bg-sky-700 text-white p-2 h-screen lg:col-span-2 lg:block hidden">
+      <div className=" bg-[#405189] text-[#c4c6cc] p-2 h-screen lg:col-span-2 lg:block hidden">
         <UserMenu />
       </div>
       <div className=" col-span-10">
