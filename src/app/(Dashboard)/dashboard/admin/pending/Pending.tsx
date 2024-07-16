@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Card, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
+import { Check, CircleCheck } from "lucide-react";
+import { PopupModal } from "@/components/popupModal/PopupModal";
 const Pending = async () => {
   const res = await fetch(`${process.env.BASE_URL}/ans?approve=false`, {
     cache: "no-store",
@@ -12,7 +14,11 @@ const Pending = async () => {
   return (
     <div className=" grid grid-cols-1 gap-2 lg:grid-cols-4">
       {result.data.map((item: any) => (
-        <Card className="bangla shadow-xl relative h-64">
+        <Card className="bangla shadow-xl relative h-64 p-2">
+          <div className="flex gap-2">
+            <CircleCheck className="bg-blue-500 text-white rounded-full" />
+            <p> Status : Pending </p>
+          </div>
           <div>
             <div className="bangla flex flex-col">
               <div className=" text-blue-500 font-semibold">
@@ -33,11 +39,7 @@ const Pending = async () => {
               </div>
             </div>
             <CardHeader className="w-full absolute bottom-0 right-0 left-0 ">
-              <Link href="answer">
-                <Button className="w-full" color="primary">
-                  ঊত্তর করুন
-                </Button>
-              </Link>
+              <PopupModal item={item} />
             </CardHeader>
           </div>
         </Card>
