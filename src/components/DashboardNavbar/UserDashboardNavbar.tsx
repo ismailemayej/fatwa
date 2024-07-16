@@ -10,7 +10,7 @@ import { MainMenuItem } from "../DashbordMenu/MenuItem";
 export default function UserDashboardNavbar({ user }: any) {
   return (
     <>
-      <div className="bg-white shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
+      <div className="lg:bg-white lg:text-black text-white bg-[#405189] shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex items-center gap-2">
             <DashboardMobileMenu>
@@ -38,7 +38,12 @@ export default function UserDashboardNavbar({ user }: any) {
               ))}
             </ul>
           </div>
-          <Button color="primary" variant="ghost" onClick={() => signOut()}>
+          <Button
+            color="primary"
+            className="text-white"
+            variant="ghost"
+            onClick={() => signOut()}
+          >
             LogOut
           </Button>
         </div>

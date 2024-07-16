@@ -3,7 +3,7 @@ import Pending from "./Pending";
 
 const PengingQuestion = () => {
   return (
-    <div className="m-4 shadow-xl bangla rounded-xl bg-white p-3">
+    <div className="m-4 shadow-xl bangla rounded-xl bg-white p-2">
       <Pending />
     </div>
   );

@@ -8,7 +8,7 @@ import { MainMenuItem } from "../DashbordMenu/MenuItem";
 export default function AdminDashboardNavbar({ user }: any) {
   return (
     <>
-      <div className="bg-white shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
+      <div className="lg:bg-white shadow-xl lg:text-black text-white bg-[#405189] lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex items-center gap-2">
             <DashboardMobileMenu>
