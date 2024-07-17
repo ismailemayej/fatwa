@@ -22,7 +22,6 @@ export default function PostCard({ data }: any) {
           প্রশ্ন
           <span className="text-sm">#{qn}</span>
         </div>
-
         <div className=" flex flex-col w-10/12 text-blue-700">
           <div className="font-semibold text-ellipsis">
             <Link

@@ -11,7 +11,6 @@ const Pending = async () => {
     throw new Error("Network response was not ok");
   }
   const result = await res.json();
-
   if (result.data.length === 0) {
     return (
       <div className="flex justify-center items-center h-full">
@@ -19,7 +18,6 @@ const Pending = async () => {
       </div>
     );
   }
-
   return (
     <div className="grid grid-cols-1 gap-2 lg:grid-cols-4">
       {result.data.map((item: any) => (

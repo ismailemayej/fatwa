@@ -1,5 +1,7 @@
 import { Chart } from "@/components/AdminDashboard/Chart";
+import AllQuestion from "@/components/AllQuestion/AllQuestion";
 import { Get, UserInfo } from "@/components/DataAction/DataHandle";
+import { ScrollShadow } from "@nextui-org/react";
 import Image from "next/image";
 
 import React from "react";
@@ -8,7 +10,12 @@ const Dashboard = async () => {
   const user = await UserInfo();
   const allData = await Get("ans", "");
   return (
-    <div>
+    <ScrollShadow
+      hideScrollBar
+      offset={100}
+      orientation="horizontal"
+      className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
+    >
       {/* 1st lavel */}
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="bg-white rounded-xl m-3 p-2 shadow-xl lg:col-span-9">
@@ -32,7 +39,14 @@ const Dashboard = async () => {
           </div>
         </div>
       </div>
-    </div>
+      <div className=" bg-white p-3 m-3 rounded-xl shadow-xl grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
+        {allData?.data?.map((item: any) => (
+          <div className="">
+            <AllQuestion allData={item} />
+          </div>
+        ))}
+      </div>
+    </ScrollShadow>
   );
 };
 export default Dashboard;

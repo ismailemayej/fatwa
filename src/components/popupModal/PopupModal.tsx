@@ -1,7 +1,7 @@
 "use client";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card } from "@nextui-org/react";
-import { Check, CircleCheck } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { Delete } from "../DataAction/DataHandle";

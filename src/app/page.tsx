@@ -11,7 +11,7 @@ export default async function Home() {
   const data = await Get("ans", "approve=true");
   return (
     <>
-      <MainSlider data={data} />
+      <MainSlider />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
           <LeftSide />
