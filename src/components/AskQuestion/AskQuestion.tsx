@@ -10,17 +10,17 @@ type Inputs = {
   _id: string;
 };
 
-const AskQuestion = ({ lengthData, useremail }: any) => {
+const AskQuestion = ({ lengthData, user }: any) => {
   const now = new Date();
   const time = now.toLocaleTimeString();
   const date = now.toLocaleDateString();
-
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -32,8 +32,11 @@ const AskQuestion = ({ lengthData, useremail }: any) => {
       ans: "give Ans",
       time: time,
       date: date,
-      useremail: useremail,
+      userename: user?.name,
+      useremail: user?.email,
+      useremobile: user?.mobile,
       proof: "give Proof",
+      role: "user",
       approve: false,
       tags: tags,
       comments: "Comments",
@@ -41,7 +44,9 @@ const AskQuestion = ({ lengthData, useremail }: any) => {
     };
     try {
       await Post(questionData, "ans");
-      toast.success("Question Submited");
+      toast.success("Question Submitted");
+      reset();
+      setTags([]);
     } catch (error) {
       throw error;
     }

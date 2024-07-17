@@ -26,7 +26,7 @@ export const Get = async (name: any, querydata: any) => {
 };
 //  Update mehtod
 export const Update = async (data: any, name: any, id: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
+  const res = await fetch(`http://localhost:5000/api/v1/${name}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -39,9 +39,9 @@ export const Update = async (data: any, name: any, id: any) => {
 
   return res.json();
 };
-//  Delete mehtod
-export const Delete = async (id: any, name: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
+//Delete mehtod
+export const Delete = async (name: any, id: any) => {
+  const res = await fetch(`http://localhost:5000/api/v1/${name}/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
