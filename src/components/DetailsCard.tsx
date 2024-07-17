@@ -16,7 +16,7 @@ const DetailsCard = ({ data }: any) => {
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
         <div className=" flex flex-col w-10/12 text-blue-700">
           <div className="font-bold text-ellipsis">
-            <h3 className="font-semibold text-xl">
+            <h3 className="font-semibold lg:text-xl">
               {question ? question : headline}
             </h3>
 
@@ -39,7 +39,7 @@ const DetailsCard = ({ data }: any) => {
       <Divider />
       <CardBody className="">
         <p
-          className="bangla text-lg overflow-hidden"
+          className="bangla text-lg overflow-hidde whitespace-normal"
           dangerouslySetInnerHTML={{ __html: ans }}
         ></p>
       </CardBody>
