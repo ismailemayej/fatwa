@@ -1,13 +1,11 @@
 "use client";
 import { Update } from "@/components/DataAction/DataHandle";
 import { Input, Textarea, Button } from "@nextui-org/react";
-import { useRouter } from "next/router";
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "sonner";
+import JoditEditor from "jodit-react";
 
 const EditQuestion = ({ data }: any) => {
-  const router = useRouter;
   const { qn, question, ans, proof, headline } = data;
   const [formData, setFormData] = useState({
     headline: headline || "",
@@ -18,6 +16,7 @@ const EditQuestion = ({ data }: any) => {
   });
 
   const [isPreview, setIsPreview] = useState(false);
+  const editor = useRef(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,16 +25,23 @@ const EditQuestion = ({ data }: any) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleEditorChange = (newContent: string) => {
+    setFormData((prevData) => ({ ...prevData, ans: newContent }));
+  };
+
   const handleTogglePreview = () => {
     setIsPreview(!isPreview);
   };
 
   const handleApprove = async () => {
-    if (window.confirm("Are you sure you want to approve this question?")) {
+    if (
+      window.confirm(
+        "আপনার লেখাটি এখন সবার সামনে চলে যাবে , তাই লেখা পড়ে নিশ্চিত হয়ে নিন। যদি নিশ্চিত থাকেন তাহলে ok ক্লিক করুন।"
+      )
+    ) {
       const updatedData = { ...formData, approve: true };
       try {
         await Update(updatedData, "ans", qn);
-
         toast.success("Question Approved");
       } catch (error) {
         toast.error("Error approving question");
@@ -50,27 +56,30 @@ const EditQuestion = ({ data }: any) => {
         <div>
           <p>
             <strong>Headline:</strong>
-            <div className=" bg-slate-100 lg:p-3 p-2 rounded-xl">
+            <div className="bg-slate-100 lg:p-3 p-2 rounded-xl">
               {formData.headline}
             </div>
           </p>
           <p>
-            <strong>Question:</strong>{" "}
-            <div className=" bg-slate-100 lg:p-3 p-2 rounded-xl">
-              {formData.question}
-            </div>
+            <strong>Question:</strong>
+            <div
+              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
+              dangerouslySetInnerHTML={{ __html: formData.question }}
+            ></div>
           </p>
           <p>
             <strong>Answer:</strong>
-            <div className=" bg-slate-100 lg:p-3 p-2 rounded-xl">
-              {formData.ans}
-            </div>
+            <div
+              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
+              dangerouslySetInnerHTML={{ __html: formData.ans }}
+            ></div>
           </p>
           <p>
             <strong>Proofment:</strong>
-            <div className=" bg-slate-100 lg:p-3 p-2 rounded-xl">
-              {formData.proof}
-            </div>
+            <div
+              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
+              dangerouslySetInnerHTML={{ __html: formData.proof }}
+            ></div>
           </p>
         </div>
       ) : (
@@ -84,18 +93,17 @@ const EditQuestion = ({ data }: any) => {
             onChange={handleChange}
           />
           <Textarea
+            className="text-2xl"
             type="text"
             label="Question"
             name="question"
             value={formData.question}
             onChange={handleChange}
           />
-          <Textarea
-            type="text"
-            label="Answer"
-            name="ans"
+          <JoditEditor
+            ref={editor}
             value={formData.ans}
-            onChange={handleChange}
+            onChange={handleEditorChange}
           />
           <Textarea
             type="text"

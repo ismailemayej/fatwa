@@ -10,6 +10,11 @@ import {
 
 export default function PostCard({ data }: any) {
   const { qn, question, ans, proof, time, date, headline, _id } = data;
+  const stripHtmlTags = (html: string) => {
+    return html.replace(/<\/?[^>]+(>|$)/g, "");
+  };
+
+  const cleanDetails = stripHtmlTags(data.ans);
   return (
     <Card className="max-w-full mb-1.5 bangla">
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
@@ -39,7 +44,7 @@ export default function PostCard({ data }: any) {
       <Divider />
       <CardBody className="">
         <p className="bangla overflow-hidden text-ellipsis line-clamp-4">
-          {ans}
+          {cleanDetails}
         </p>
         <span className="flex w-full justify-between mt-[-20px]">
           <p className="text-xs text-white">.</p>

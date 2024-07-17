@@ -38,7 +38,10 @@ const DetailsCard = ({ data }: any) => {
       </CardHeader>
       <Divider />
       <CardBody className="">
-        <p className="bangla text-lg overflow-hidden">{ans}</p>
+        <p
+          className="bangla text-lg overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: ans }}
+        ></p>
       </CardBody>
       <Divider />
       <CardFooter className="bangla  bg-red-100 text-green-900">
