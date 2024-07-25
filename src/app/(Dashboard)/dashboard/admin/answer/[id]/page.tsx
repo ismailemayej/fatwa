@@ -1,5 +1,6 @@
 import React from "react";
 import EditQuestion from "../EditQuestion";
+import { ScrollShadow } from "@nextui-org/react";
 const AnswerPage = async ({ params }: any) => {
   const target = "ans" || "trending";
   const res = await fetch(`${process.env.BASE_URL}/${target}/${params.id}`, {
@@ -7,9 +8,14 @@ const AnswerPage = async ({ params }: any) => {
   });
   const data = await res.json();
   return (
-    <div>
+    <ScrollShadow
+      hideScrollBar
+      offset={100}
+      orientation="horizontal"
+      className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
+    >
       <EditQuestion data={data} />
-    </div>
+    </ScrollShadow>
   );
 };
 export default AnswerPage;

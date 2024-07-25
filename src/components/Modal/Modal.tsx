@@ -2,11 +2,11 @@ import React from "react";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
   useDisclosure,
+  ScrollShadow,
 } from "@nextui-org/react";
 
 export default function ModalCommon({ button, body }: any) {
@@ -46,7 +46,14 @@ export default function ModalCommon({ button, body }: any) {
               {/* <ModalHeader className="flex flex-col gap-1">
                 Modal Title
               </ModalHeader> */}
-              <ModalBody>{body}</ModalBody>
+              <ScrollShadow
+                hideScrollBar
+                offset={100}
+                orientation="horizontal"
+                className="h-screen"
+              >
+                <ModalBody>{body}</ModalBody>
+              </ScrollShadow>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close

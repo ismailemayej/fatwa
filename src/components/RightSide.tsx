@@ -1,11 +1,9 @@
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
-import Trending from "./trendingQ&A/Trending";
 import TotalPost from "./totalPost.tsx/TotalPost";
 import Advisement from "./advisement/Advisement";
 import Tags from "./tags/Tags";
-
 const RightSide = () => {
   return (
     <div className="bangls font-semibold lg:block hidden border-gray-200 rounded-xl border-1 p-2 h-screen col-span-3 ">
@@ -14,12 +12,10 @@ const RightSide = () => {
           প্রশ্ন করুন
         </Button>
       </Link>
-      <Trending />
       <TotalPost />
       <Advisement />
       <Tags />
     </div>
   );
 };
-
 export default RightSide;

@@ -16,7 +16,6 @@ export function PopupModal({ item }: any) {
       toast.success("Item deleted successfully");
       setIsDialogOpen(false);
     } catch (error) {
-      console.error("Error deleting item:", error);
       toast.error("An error occurred while deleting the item");
     }
   };

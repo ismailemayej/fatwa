@@ -4,8 +4,10 @@ import { Input, Textarea, Button } from "@nextui-org/react";
 import React, { useState, useRef } from "react";
 import { toast } from "sonner";
 import JoditEditor from "jodit-react";
-
+import QuestionPreview from "@/components/QuestionPreview";
+import { useRouter } from "next/navigation";
 const EditQuestion = ({ data }: any) => {
+  const router = useRouter();
   const { qn, question, ans, proof, headline } = data;
   const [formData, setFormData] = useState({
     headline: headline || "",
@@ -24,15 +26,12 @@ const EditQuestion = ({ data }: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
   const handleEditorChange = (newContent: string) => {
     setFormData((prevData) => ({ ...prevData, ans: newContent }));
   };
-
   const handleTogglePreview = () => {
     setIsPreview(!isPreview);
   };
-
   const handleApprove = async () => {
     if (
       window.confirm(
@@ -43,45 +42,16 @@ const EditQuestion = ({ data }: any) => {
       try {
         await Update(updatedData, "ans", qn);
         toast.success("Question Approved");
+        router.push("/dashboard/admin");
       } catch (error) {
         toast.error("Error approving question");
-        console.error(error);
       }
     }
   };
-
   return (
     <div className="flex flex-col gap-2 bangla text-xl bg-white m-3 p-3 rounded-xl lg:w-4/5 w-4/5 mx-auto">
       {isPreview ? (
-        <div>
-          <p>
-            <strong>Headline:</strong>
-            <div className="bg-slate-100 lg:p-3 p-2 rounded-xl">
-              {formData.headline}
-            </div>
-          </p>
-          <p>
-            <strong>Question:</strong>
-            <div
-              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
-              dangerouslySetInnerHTML={{ __html: formData.question }}
-            ></div>
-          </p>
-          <p>
-            <strong>Answer:</strong>
-            <div
-              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
-              dangerouslySetInnerHTML={{ __html: formData.ans }}
-            ></div>
-          </p>
-          <p>
-            <strong>Proofment:</strong>
-            <div
-              className="bg-slate-100 lg:p-3 p-2 rounded-xl"
-              dangerouslySetInnerHTML={{ __html: formData.proof }}
-            ></div>
-          </p>
-        </div>
+        <QuestionPreview data={formData} />
       ) : (
         <div className="text-2xl">
           <Input
@@ -93,7 +63,6 @@ const EditQuestion = ({ data }: any) => {
             onChange={handleChange}
           />
           <Textarea
-            className="text-2xl"
             type="text"
             label="Question"
             name="question"

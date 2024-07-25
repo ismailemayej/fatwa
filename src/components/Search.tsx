@@ -29,7 +29,7 @@ const SearchFunction: React.FC = () => {
       const data = await res.json();
       setResults(data.data);
     } catch (err) {
-      console.error(err);
+      throw err;
     }
   };
 

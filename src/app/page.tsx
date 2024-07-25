@@ -22,7 +22,7 @@ export default async function Home() {
             className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
           >
             <PostTabs data={data} />
-            {data?.data.map((ans: any) => (
+            {data?.data?.reverse().map((ans: any) => (
               <>
                 <span className="lg:block hidden">
                   <PostCard key={ans._id} data={ans} />

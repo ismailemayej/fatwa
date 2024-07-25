@@ -97,7 +97,6 @@ const AskQuestion = ({ lengthData, user }: any) => {
             Add Tag
           </Button>
         </div>
-
         <div className="my-2">
           {tags.map((tag, index) => (
             <span

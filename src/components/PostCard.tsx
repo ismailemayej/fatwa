@@ -33,9 +33,13 @@ export default function PostCard({ data }: any) {
                 {headline ? headline : question}
               </h3>
             </Link>
-            <div className="flex gap-3 text-black">
-              <span className=" text-sm">{date}</span>
-              <span className=" text-sm">সময়:{time}</span>
+            <div className="flex">
+              <span className=" px-2 text-xs bg-green-900 text-white rounded-s-xl">
+                {date}
+              </span>
+              <span className=" text-xs px-2 bg-green-600 text-white rounded-e-xl">
+                সময়:{time}
+              </span>
             </div>
           </div>
         </div>
