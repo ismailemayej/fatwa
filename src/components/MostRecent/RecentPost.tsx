@@ -2,8 +2,9 @@ import React from "react";
 import { Get } from "../DataAction/DataHandle";
 import { Card, CardHeader, Divider } from "@nextui-org/react";
 import Link from "next/link";
+import { ConvertE2B } from "../convert/Convert";
 const RecentPost = async () => {
-  const RecentData = await Get("recent-posts");
+  const RecentData = await Get("recent-posts", "");
   const data = RecentData?.data?.filter((item: any) => item.approve === true);
 
   return (
@@ -15,7 +16,7 @@ const RecentPost = async () => {
             <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
               <div className=" bg-green-200 rounded-xl w-2/12 text-black  flex flex-col p-2 items-center ">
                 প্রশ্ন
-                <span className="text-sm">#{item?.qn}</span>
+                <span className="text-sm">#{ConvertE2B(item?.qn)}</span>
               </div>
 
               <div className=" flex flex-col w-10/12 text-blue-700">
@@ -30,8 +31,10 @@ const RecentPost = async () => {
                     </h3>
                   </Link>
                   <div className="flex gap-3 text-black">
-                    <span className=" text-sm">{item?.date}</span>
-                    <span className=" text-sm">সময়:{item?.time}</span>
+                    <span className=" text-sm">{ConvertE2B(item?.date)}</span>
+                    <span className=" text-sm">
+                      সময়:{ConvertE2B(item?.time)}
+                    </span>
                   </div>
                 </div>
               </div>

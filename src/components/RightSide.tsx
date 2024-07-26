@@ -4,6 +4,7 @@ import React from "react";
 import TotalPost from "./totalPost.tsx/TotalPost";
 import Advisement from "./advisement/Advisement";
 import Tags from "./tags/Tags";
+
 const RightSide = () => {
   return (
     <div className="bangls font-semibold lg:block hidden border-gray-200 rounded-xl border-1 p-2 h-screen col-span-3 ">

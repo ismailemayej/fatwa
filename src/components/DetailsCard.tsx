@@ -8,6 +8,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import { Home } from "lucide-react";
+import { ConvertE2B } from "./convert/Convert";
 
 const DetailsCard = ({ data }: any) => {
   const { qn, question, ans, proof, time, date, headline, _id } = data;
@@ -22,10 +23,10 @@ const DetailsCard = ({ data }: any) => {
 
             <div className="flex">
               <span className=" px-2 text-sm bg-green-900 text-white rounded-s-xl">
-                {date}
+                {ConvertE2B(date)}
               </span>
               <span className=" text-sm px-2 bg-green-600 text-white rounded-e-xl">
-                সময়:{time}
+                সময়:{ConvertE2B(time)}
               </span>
               <Link href="/">
                 <button className="text-xs mx-1">

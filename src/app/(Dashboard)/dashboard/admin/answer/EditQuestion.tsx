@@ -14,6 +14,7 @@ const EditQuestion = ({ data }: any) => {
     question: question || "",
     ans: ans || "",
     proof: proof || "",
+    pending: false,
     approve: false,
   });
 
@@ -33,21 +34,16 @@ const EditQuestion = ({ data }: any) => {
     setIsPreview(!isPreview);
   };
   const handleApprove = async () => {
-    if (
-      window.confirm(
-        "আপনার লেখাটি এখন সবার সামনে চলে যাবে , তাই লেখা পড়ে নিশ্চিত হয়ে নিন। যদি নিশ্চিত থাকেন তাহলে ok ক্লিক করুন।"
-      )
-    ) {
-      const updatedData = { ...formData, approve: true };
-      try {
-        await Update(updatedData, "ans", qn);
-        toast.success("Question Approved");
-        router.push("/dashboard/admin");
-      } catch (error) {
-        toast.error("Error approving question");
-      }
+    const updatedData = { ...formData, pending: true, approve: true };
+    try {
+      await Update(updatedData, "ans", qn);
+      toast.success("Question Approved");
+      router.push("/dashboard/admin");
+    } catch (error) {
+      toast.error("Error approving question");
     }
   };
+
   return (
     <div className="flex flex-col gap-2 bangla text-xl bg-white m-3 p-3 rounded-xl lg:w-4/5 w-4/5 mx-auto">
       {isPreview ? (

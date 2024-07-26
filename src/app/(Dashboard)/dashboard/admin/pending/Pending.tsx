@@ -3,7 +3,7 @@ import { Card, CardHeader } from "@nextui-org/react";
 import { CircleCheck } from "lucide-react";
 import { PopupModal } from "@/components/popupModal/PopupModal";
 const Pending = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/ans?approve=false`, {
+  const res = await fetch(`${process.env.BASE_URL}/ans?pending=false`, {
     cache: "no-store",
   });
   if (!res.ok) {

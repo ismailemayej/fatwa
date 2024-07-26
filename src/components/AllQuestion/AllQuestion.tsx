@@ -6,35 +6,45 @@ import {
   CardBody,
   CardFooter,
   Divider,
-  Switch,
 } from "@nextui-org/react";
 import { toast } from "sonner";
-import { Eye, FilePenLine, Trash2 } from "lucide-react";
+import { Eye, EyeOff, FilePenLine, Trash2 } from "lucide-react";
 import { Delete, Get, Update } from "../DataAction/DataHandle";
 import ModalCommon from "../Modal/Modal";
 import Link from "next/link";
 import QuestionPreview from "../QuestionPreview";
 
 export default function AllQuestion({ allData }: any) {
+  // const [data, setData] = useState(allData);
   const [approve, setApprove] = useState(allData.approve);
-  useEffect(() => {
-    Get("ans", "approve=true");
-  }, [allData]);
+  // const fetchData = async () => {
+  //   try {
+  //     const updatedData = await Get("ans", "approve=true")
+  //     setData(updatedData);
+  //   } catch (error) {
+  //     toast.error("An error occurred while fetching data");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, [allData]);
   const deleteItem = async (qn: number) => {
     try {
       await Delete("ans", qn);
       toast.success("Item deleted successfully");
+      // fetchData(); // Re-fetch data after deletion
     } catch (error) {
       toast.error("An error occurred while deleting the item");
     }
   };
-
   const handleApproveToggle = async (qn: any) => {
     try {
       const updatedData = { ...allData, approve: !approve };
       await Update(updatedData, "ans", qn);
       setApprove(!approve);
-      toast.success("status Request Change successfully");
+      toast.success("Status request changed successfully");
+      // fetchData();
     } catch (error) {
       toast.error("An error occurred while updating the approval status");
     }
@@ -62,25 +72,25 @@ export default function AllQuestion({ allData }: any) {
         {/* for preview */}
         <ModalCommon
           button={
-            <Eye className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full  border text-2xl bg-slate-100" />
+            <Eye className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full border text-2xl bg-slate-100" />
           }
           body={<QuestionPreview data={allData} />}
         />
         {/* for Edit */}
         <Link href={`/dashboard/admin/answer/${allData.qn}`}>
-          <FilePenLine className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full  border text-2xl bg-slate-100" />
+          <FilePenLine className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full border text-2xl bg-slate-100" />
         </Link>
         {/* for delete */}
         <button onClick={() => deleteItem(allData.qn)}>
-          <Trash2 className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full  border text-2xl bg-slate-100" />
+          <Trash2 className=" hover:transition-all hover:p-0.5 hover:border hover:border-green-600 rounded-full border text-2xl bg-slate-100" />
         </button>
         {/* for approve false or true */}
         <button
-          className=" bg-neutral-400 border rounded-xl px-2 text-white hover:bg-slate-200 hover:text-black"
+          className="bg-yellow-300 border rounded-xl px-2 text-slate-900 hover:bg-slate-200 hover:text-black"
           onClick={() => handleApproveToggle(allData.qn)}
         >
-          {(allData.approve === true && "Showing") ||
-            (allData.approve === false && "pending")}
+          {(allData.approve === true && <Eye />) ||
+            (allData.approve === false && <EyeOff />)}
         </button>
       </CardFooter>
     </Card>

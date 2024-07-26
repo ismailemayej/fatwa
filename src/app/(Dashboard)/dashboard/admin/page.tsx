@@ -1,14 +1,26 @@
 import { Chart } from "@/components/AdminDashboard/Chart";
 import AllQuestion from "@/components/AllQuestion/AllQuestion";
-import { Get, UserInfo } from "@/components/DataAction/DataHandle";
+import { UserInfo } from "@/components/DataAction/DataHandle";
 import { ScrollShadow } from "@nextui-org/react";
 import Image from "next/image";
-
 import React from "react";
-
 const Dashboard = async () => {
   const user = await UserInfo();
-  const allData = await Get("ans", "");
+  const res = await fetch(`${process.env.BASE_URL}/ans?pending=true`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const allData = await res.json();
+  if (allData.data.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <p>No Question</p>
+      </div>
+    );
+  }
+
   return (
     <ScrollShadow
       hideScrollBar

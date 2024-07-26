@@ -15,8 +15,9 @@ export const Post = async (data: any, name: any) => {
 };
 //  Get mehtod
 export const Get = async (name: any, querydata: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {
+  const res = await fetch(`http://localhost:5000/api/v1/${name}?${querydata}`, {
     cache: "no-store",
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Network response was not ok");
@@ -32,6 +33,7 @@ export const Update = async (data: any, name: any, id: any) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+    next: { revalidate: 10 },
   });
   if (!res.ok) {
     throw new Error("Network response was not ok");

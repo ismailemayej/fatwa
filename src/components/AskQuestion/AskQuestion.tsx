@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Post } from "../DataAction/DataHandle";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 type Inputs = {
   headline: string;
   question: string;
@@ -11,6 +12,7 @@ type Inputs = {
 };
 
 const AskQuestion = ({ lengthData, user }: any) => {
+  const router = useRouter();
   const now = new Date();
   const time = now.toLocaleTimeString();
   const date = now.toLocaleDateString();
@@ -38,6 +40,7 @@ const AskQuestion = ({ lengthData, user }: any) => {
       proof: "উত্তরে সপক্ষে দলিল দিন",
       role: "user",
       approve: false,
+      pending: false,
       tags: tags,
       comments: "Comments",
       likes: 0,
@@ -47,6 +50,7 @@ const AskQuestion = ({ lengthData, user }: any) => {
       toast.success("Question Submitted");
       reset();
       setTags([]);
+      router.push("/dashboard");
     } catch (error) {
       throw error;
     }
@@ -75,7 +79,7 @@ const AskQuestion = ({ lengthData, user }: any) => {
           type="text"
           label="Headline"
           className="py-2"
-          {...register("headline", { required: true })}
+          {...register("headline", { required: false })}
         />
         {errors.headline && <span>This field is required</span>}
         <Textarea

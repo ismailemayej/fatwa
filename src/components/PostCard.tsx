@@ -7,6 +7,7 @@ import {
   Divider,
   Link,
 } from "@nextui-org/react";
+import { ConvertE2B } from "./convert/Convert";
 
 export default function PostCard({ data }: any) {
   const { qn, question, ans, proof, time, date, headline, _id } = data;
@@ -20,7 +21,7 @@ export default function PostCard({ data }: any) {
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
         <div className=" bg-green-200 rounded-xl w-2/12 text-black  flex flex-col p-2 items-center ">
           প্রশ্ন
-          <span className="text-sm">#{qn}</span>
+          <span className="text-sm"># {ConvertE2B(qn)}</span>
         </div>
         <div className=" flex flex-col w-10/12 text-blue-700">
           <div className="font-semibold text-ellipsis">
@@ -35,10 +36,10 @@ export default function PostCard({ data }: any) {
             </Link>
             <div className="flex">
               <span className=" px-2 text-xs bg-green-900 text-white rounded-s-xl">
-                {date}
+                {ConvertE2B(date)}
               </span>
-              <span className=" text-xs px-2 bg-green-600 text-white rounded-e-xl">
-                সময়:{time}
+              <span className=" text-xs px-2 bg-green-300 text-black rounded-e-xl">
+                সময়:{ConvertE2B(time)}
               </span>
             </div>
           </div>
