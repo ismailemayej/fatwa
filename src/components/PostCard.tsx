@@ -53,7 +53,7 @@ export default function PostCard({ data }: any) {
         <span className="flex w-full justify-between mt-[-20px]">
           <p className="text-xs text-white">.</p>
           <Link
-            className="bg-blue-500 border-l-8 border-white bangla text-xs px-2 rounded-lg py-0.5  text-white"
+            className="bg-blue-500 border-l-8 border-white bangla text-xs px-2 rounded-xl py-0.5  text-white"
             href={`/q&a/${qn}`}
           >
             বিস্তারিত
@@ -64,7 +64,9 @@ export default function PostCard({ data }: any) {
       <CardFooter className="bangla text-green-900">
         <p className="text-sm flex gap-1">
           <span className="font-semibold text-black">সূত্র:</span>
-          <span>{proof}</span>
+          <span className="overflow-hidden text-ellipsis line-clamp-1">
+            {proof}
+          </span>
         </p>
       </CardFooter>
     </Card>

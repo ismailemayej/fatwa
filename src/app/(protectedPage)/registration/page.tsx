@@ -1,7 +1,12 @@
 import React from "react";
+import Registration from "./RegisterUser";
 
-const Registration = () => {
-  return <div>This is Registration page</div>;
+const RegisterUser = () => {
+  return (
+    <div>
+      <Registration />
+    </div>
+  );
 };
 
-export default Registration;
+export default RegisterUser;

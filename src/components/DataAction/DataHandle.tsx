@@ -1,5 +1,38 @@
+"use server";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth/next";
+
+export const SignUpUser = async (
+  prevData: FormData,
+  currentFormData: FormData
+) => {
+  try {
+    const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
+    console.log("Formatted Data:", formattedData);
+
+    const res = await fetch("http://localhost:5000/api/v1/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: formattedData,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Server responded with status ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    if (error?.name === "TypeError" && error?.message === "Failed to fetch") {
+      console.error("Network error or CORS issue:", error);
+    } else {
+      console.error("Error during user sign-up:", error);
+    }
+    throw error;
+  }
+};
 
 //  post mehtod
 export const Post = async (data: any, name: any) => {
@@ -10,7 +43,6 @@ export const Post = async (data: any, name: any) => {
     },
     body: JSON.stringify(data),
   });
-
   return res.json();
 };
 //  Get mehtod

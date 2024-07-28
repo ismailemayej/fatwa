@@ -1,4 +1,4 @@
-export const ConvertE2B = (num: number): string => {
+export const ConvertE2B = (num: any): string => {
   const bengaliNumerals: { [key: string]: string } = {
     "0": "০",
     "1": "১",

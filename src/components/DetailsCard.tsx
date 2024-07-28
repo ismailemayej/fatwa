@@ -9,9 +9,8 @@ import {
 } from "@nextui-org/react";
 import { Home } from "lucide-react";
 import { ConvertE2B } from "./convert/Convert";
-
 const DetailsCard = ({ data }: any) => {
-  const { qn, question, ans, proof, time, date, headline, _id } = data;
+  const { question, ans, proof, time, date, headline } = data;
   return (
     <Card className="max-w-full mb-1.5 bangla">
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
