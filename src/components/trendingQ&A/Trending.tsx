@@ -1,10 +1,11 @@
 import React from "react";
-import { Get } from "../DataAction/DataHandle";
+
 import { Card, Divider } from "@nextui-org/react";
 import Link from "next/link";
+import { Get } from "../DataAction/DataHandle";
 
 const Trending = async () => {
-  const Trending = await Get("trending");
+  const Trending = await Get("questions", "trending");
   const data = Trending?.data?.filter((item: any) => item.approve === true);
   return (
     <Card className="my-1">

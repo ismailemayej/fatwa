@@ -12,7 +12,7 @@ export function PopupModal({ item }: any) {
 
   const deleteItem = async (qn: number) => {
     try {
-      await Delete("ans", qn);
+      await Delete("questions", qn);
       toast.success("Item deleted successfully");
       setIsDialogOpen(false);
     } catch (error) {

@@ -1,12 +1,11 @@
 import React from "react";
-import { Get } from "../DataAction/DataHandle";
 import { Card, CardHeader, Divider } from "@nextui-org/react";
 import Link from "next/link";
 import { ConvertE2B } from "../convert/Convert";
+import { Get } from "../DataAction/DataHandle";
 const RecentPost = async () => {
-  const RecentData = await Get("recent-posts", "");
+  const RecentData = await Get("questions/recent-posts", "");
   const data = RecentData?.data?.filter((item: any) => item.approve === true);
-
   return (
     <Card className="my-1">
       <div className="bg-slate-100 px-2 text-center py-1">Recent Question</div>

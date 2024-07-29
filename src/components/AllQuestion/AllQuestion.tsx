@@ -19,7 +19,7 @@ export default function AllQuestion({ allData }: any) {
   const [approve, setApprove] = useState(allData.approve);
   // const fetchData = async () => {
   //   try {
-  //     const updatedData = await Get("ans", "approve=true")
+  //     const updatedData = await Get("questions", "approve=true")
   //     setData(updatedData);
   //   } catch (error) {
   //     toast.error("An error occurred while fetching data");
@@ -31,7 +31,7 @@ export default function AllQuestion({ allData }: any) {
   // }, [allData]);
   const deleteItem = async (qn: number) => {
     try {
-      await Delete("ans", qn);
+      await Delete("questions", qn);
       toast.success("Item deleted successfully");
       // fetchData(); // Re-fetch data after deletion
     } catch (error) {
@@ -41,7 +41,7 @@ export default function AllQuestion({ allData }: any) {
   const handleApproveToggle = async (qn: any) => {
     try {
       const updatedData = { ...allData, approve: !approve };
-      await Update(updatedData, "ans", qn);
+      await Update(updatedData, "questions", qn);
       setApprove(!approve);
       toast.success("Status request changed successfully");
       // fetchData();

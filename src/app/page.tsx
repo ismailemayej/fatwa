@@ -8,7 +8,7 @@ import RightSide from "@/components/RightSide";
 import { PostTabs } from "@/components/Tabs/PostTabs";
 import { ScrollShadow } from "@nextui-org/react";
 export default async function Home() {
-  const data = await Get("ans", "approve=true");
+  const data = await Get("questions", "approve=true");
   return (
     <>
       <MainSlider />

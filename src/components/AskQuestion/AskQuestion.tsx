@@ -46,7 +46,7 @@ const AskQuestion = ({ lengthData, user }: any) => {
       likes: 0,
     };
     try {
-      await Post(questionData, "ans");
+      await Post(questionData, "questions");
       toast.success("Question Submitted");
       reset();
       setTags([]);

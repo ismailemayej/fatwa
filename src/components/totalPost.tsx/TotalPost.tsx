@@ -3,8 +3,8 @@ import React from "react";
 import { Get } from "../DataAction/DataHandle";
 import { ConvertE2B } from "../convert/Convert";
 const TotalPost = async () => {
-  const TotalQuestion = await Get("ans", "");
-  const TotalAnswer = await Get("ans", "approve=true");
+  const TotalQuestion = await Get("questions", "");
+  const TotalAnswer = await Get("questions", "approve=true");
   // Convert lengths to Bengali numerals
   const totalQuestionLength = ConvertE2B(TotalQuestion?.data.length ?? 0);
   const totalAnswerLength = ConvertE2B(TotalAnswer?.data.length ?? 0);

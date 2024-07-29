@@ -1,7 +1,6 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth/next";
-
 export const SignUpUser = async (
   prevData: FormData,
   currentFormData: FormData
@@ -10,7 +9,7 @@ export const SignUpUser = async (
     const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
     console.log("Formatted Data:", formattedData);
 
-    const res = await fetch("http://localhost:5000/api/v1/register", {
+    const res = await fetch(`${process.env.BASE_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,18 +24,13 @@ export const SignUpUser = async (
     const data = await res.json();
     return data;
   } catch (error) {
-    if (error?.name === "TypeError" && error?.message === "Failed to fetch") {
-      console.error("Network error or CORS issue:", error);
-    } else {
-      console.error("Error during user sign-up:", error);
-    }
     throw error;
   }
 };
 
 //  post mehtod
 export const Post = async (data: any, name: any) => {
-  const res = await fetch(`http://localhost:5000/api/v1/${name}`, {
+  const res = await fetch(`${process.env.BASE_URL}/${name}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,19 +41,12 @@ export const Post = async (data: any, name: any) => {
 };
 //  Get mehtod
 export const Get = async (name: any, querydata: any) => {
-  const res = await fetch(`http://localhost:5000/api/v1/${name}?${querydata}`, {
-    cache: "no-store",
-    next: { revalidate: 10 },
-  });
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
-
+  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`);
   return res.json();
 };
 //  Update mehtod
 export const Update = async (data: any, name: any, id: any) => {
-  const res = await fetch(`http://localhost:5000/api/v1/${name}/${id}`, {
+  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +62,7 @@ export const Update = async (data: any, name: any, id: any) => {
 };
 //Delete mehtod
 export const Delete = async (name: any, id: any) => {
-  const res = await fetch(`http://localhost:5000/api/v1/${name}/${id}`, {
+  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

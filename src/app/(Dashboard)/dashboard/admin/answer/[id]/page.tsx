@@ -2,7 +2,7 @@ import React from "react";
 import EditQuestion from "../EditQuestion";
 import { ScrollShadow } from "@nextui-org/react";
 const AnswerPage = async ({ params }: any) => {
-  const target = (params.id && "ans") || "trending";
+  const target = (params.id && "questions") || "trending";
   const res = await fetch(`${process.env.BASE_URL}/${target}/${params.id}`, {
     cache: "no-store",
   });

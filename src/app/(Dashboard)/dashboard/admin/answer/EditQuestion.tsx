@@ -36,7 +36,7 @@ const EditQuestion = ({ data }: any) => {
   const handleApprove = async () => {
     const updatedData = { ...formData, pending: true, approve: true };
     try {
-      await Update(updatedData, "ans", qn);
+      await Update(updatedData, "questions", qn);
       toast.success("Question Approved");
       router.push("/dashboard/admin");
     } catch (error) {

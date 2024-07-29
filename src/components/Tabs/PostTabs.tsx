@@ -7,7 +7,7 @@ import Advisement from "../advisement/Advisement";
 import AskQuestion from "../AskQuestion/AskQuestion";
 import { Get, UserInfo } from "../DataAction/DataHandle";
 export async function PostTabs({ data }: any) {
-  const allLength = await Get("ans", "");
+  const allLength = await Get("questions", "");
   const length = allLength?.data;
   const mail = await UserInfo();
 
