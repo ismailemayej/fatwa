@@ -2,14 +2,13 @@ import DetailsCard from "@/components/DetailsCard";
 import React from "react";
 import RecentPost from "@/components/MostRecent/RecentPost";
 const Details = async ({ params }: any) => {
-  const target = params.ansID ? "questions" : "trending";
-  const res = await fetch(`${process.env.BASE_URL}/${target}/${params.ansID}`, {
-    cache: "no-store",
-  });
+  const target = (params && "questions") || "trending";
+  const res = await fetch(`${process.env.BASE_URL}/${target}/${params.ansID}`);
   const data = await res.json();
+
   return (
     <div>
-      <DetailsCard data={data} />
+      <DetailsCard key={data._id} data={data} />
       <RecentPost />
     </div>
   );

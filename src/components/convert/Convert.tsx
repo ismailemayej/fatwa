@@ -11,6 +11,11 @@ export const ConvertE2B = (num: any): string => {
     "8": "৮",
     "9": "৯",
   };
+
+  if (num === null || num === undefined) {
+    return "";
+  }
+
   return num
     .toString()
     .split("")

@@ -23,8 +23,8 @@ export default function AdminDashboardNavbar({ user }: any) {
 
           <div className="hidden w-full md:flex md:w-auto" id="navbar-sticky">
             <ul className="flex justify-between gap-10 flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg first-line:md:space-x-8 md:flex-row md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-600 dark:border-gray-700">
-              {MainMenuItem.map((item) => (
-                <li className="my-1">
+              {MainMenuItem.map((item, index) => (
+                <li key={index} className="my-1">
                   <Link
                     href={item.link}
                     className=" hover:border-b-3 hover:border-yellow-600 hover:px-1 hover:transition-all hover:scale-95"

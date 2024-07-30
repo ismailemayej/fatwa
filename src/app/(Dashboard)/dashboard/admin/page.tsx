@@ -6,7 +6,7 @@ import Image from "next/image";
 import React from "react";
 const Dashboard = async () => {
   const user = await UserInfo();
-  const res = await fetch(`${process.env.BASE_URL}/ans?pending=true`, {
+  const res = await fetch(`${process.env.BASE_URL}/questions?pending=true`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -53,7 +53,7 @@ const Dashboard = async () => {
       </div>
       <div className=" bg-white p-3 m-3 rounded-xl shadow-xl grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
         {allData?.data?.map((item: any) => (
-          <div className="">
+          <div key={item._id} className="">
             <AllQuestion allData={item} />
           </div>
         ))}

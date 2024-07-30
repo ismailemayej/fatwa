@@ -12,7 +12,7 @@ const Trending = async () => {
       <div className="bg-slate-100 px-2 text-center py-1">Trending Q&A</div>
       <div className="mt-1 pt-2">
         {data?.map((item: any) => (
-          <Link href={`/q&a/${item.qn}`}>
+          <Link key={item._id} href={`/q&a/${item.qn}`}>
             <div
               className="bangla px-2 py-1 hover:text-blue-600 hover:font-semibold"
               key={item._id}

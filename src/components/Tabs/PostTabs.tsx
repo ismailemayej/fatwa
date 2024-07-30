@@ -31,7 +31,7 @@ export async function PostTabs({ data }: any) {
       </TabsContent>
       <TabsContent value="account">
         {data?.data?.map((ans: any) => (
-          <PostCard data={ans} />
+          <PostCard key={ans._id} data={ans} />
         ))}
       </TabsContent>
       <TabsContent value="askquestion">
