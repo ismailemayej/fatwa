@@ -5,22 +5,16 @@ export const SignUpUser = async (
   prevData: FormData,
   currentFormData: FormData
 ) => {
+  const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
+  console.log("Formatted Data:", formattedData);
+  const res = await fetch(`${process.env.BASE_URL}/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formattedData,
+  });
   try {
-    const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
-    console.log("Formatted Data:", formattedData);
-
-    const res = await fetch(`${process.env.BASE_URL}/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: formattedData,
-    });
-
-    if (!res.ok) {
-      throw new Error(`Server responded with status ${res.status}`);
-    }
-
     const data = await res.json();
     return data;
   } catch (error) {
