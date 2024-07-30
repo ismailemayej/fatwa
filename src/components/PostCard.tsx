@@ -8,18 +8,16 @@ import {
   Link,
 } from "@nextui-org/react";
 import { ConvertE2B } from "./convert/Convert";
-
 export default function PostCard({ data }: any) {
-  const { qn, question, ans, proof, time, date, headline, _id } = data;
+  const { qn, question, proof, time, date, headline, _id } = data;
   const stripHtmlTags = (html: string) => {
     return html.replace(/<\/?[^>]+(>|$)/g, "");
   };
-
   const cleanDetails = stripHtmlTags(data.ans);
   return (
     <Card className="max-w-full mb-1.5 bangla">
       <CardHeader className="flex gap-3 bg-[#f8f8f8] bangla">
-        <div className=" bg-green-200 rounded-xl w-2/12 text-black  flex flex-col p-2 items-center ">
+        <div className=" bg-green-200 rounded-xl w-2/12 text-black  flex flex-col p-2 items-center">
           প্রশ্ন
           <span className="text-sm"># {ConvertE2B(qn)}</span>
         </div>

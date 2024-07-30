@@ -35,16 +35,16 @@ const SearchFunction: React.FC = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="px-7">
         <form
           onSubmit={handleSearch}
-          className="flex items-center lg:w-full w-4/5 mx-auto"
+          className="lg:flex flex-col items-center lg:w-full w-4/5 mx-auto"
         >
           <input
             onChange={handleInputChange}
             value={query}
             type="text"
-            className="p-2 border border-neutral-800 focus:ring-2 focus:ring-teal-500 w-96 relative z-10 rounded-xl outline-none bg-white placeholder:text-neutral-700"
+            className="p-2 border border-neutral-800 focus:ring-2 focus:ring-teal-500 lg:w-96 w-[60%] relative z-10 rounded-xl outline-none bg-white placeholder:text-neutral-700"
             placeholder="type your question.."
           />
           <Button type="submit" color="primary" className="text-xl w-1/12 z-10">

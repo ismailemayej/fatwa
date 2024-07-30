@@ -28,7 +28,7 @@ export default async function Home() {
             {data?.data?.reverse().map((ans: any) => (
               <>
                 <span className="lg:block hidden">
-                  <PostCard key={ans._id} data={ans} />
+                  <PostCard key={ans._id} data={ans} />{" "}
                 </span>
               </>
             ))}

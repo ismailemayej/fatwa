@@ -12,6 +12,7 @@ type Inputs = {
 };
 
 const AskQuestion = ({ lengthData, user }: any) => {
+  console.log("all Length", lengthData);
   const router = useRouter();
   const now = new Date();
   const time = now.toLocaleTimeString();

@@ -5,6 +5,7 @@ const AskQuestionPage = async () => {
   const allLength = await Get("questions", "");
   const user = await UserInfo();
   const length = allLength?.data;
+
   return (
     <div>
       <AskQuestion lengthData={length.length} user={user} />

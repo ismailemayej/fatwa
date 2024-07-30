@@ -6,8 +6,8 @@ import RightSide from "@/components/RightSide";
 import { ScrollShadow } from "@nextui-org/react";
 import MainSlider from "@/components/mainSlider/MainSlider";
 export const metadata: Metadata = {
-  title: "Fatwa in Bangla",
-  description: "Bangla Fatwa knowlage",
+  title: "Ask Question",
+  description: "",
 };
 
 export default function AskLayout({

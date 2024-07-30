@@ -3,9 +3,7 @@ import { Card, CardHeader } from "@nextui-org/react";
 import { CircleCheck } from "lucide-react";
 import { PopupModal } from "@/components/popupModal/PopupModal";
 const Pending = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/questions?pending=false`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`${process.env.BASE_URL}/questions?pending=false`);
   if (!res.ok) {
     throw new Error("Network response was not ok");
   }
