@@ -1,6 +1,5 @@
 import { Card } from "@nextui-org/react";
 import React from "react";
-
 import { ConvertE2B } from "../convert/Convert";
 import { Get } from "../DataAction/DataHandle";
 const TotalPost = async () => {

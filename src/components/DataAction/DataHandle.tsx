@@ -6,7 +6,7 @@ export const SignUpUser = async (
   currentFormData: FormData
 ) => {
   const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
-  console.log("Formatted Data:", formattedData);
+
   const res = await fetch(`${process.env.BASE_URL}/register`, {
     method: "POST",
     headers: {
@@ -67,7 +67,6 @@ export const Delete = async (name: any, id: any) => {
     const errorDetails = await res.text();
     throw new Error(`Network response was not ok: ${errorDetails}`);
   }
-
   return res.json();
 };
 // get user information
