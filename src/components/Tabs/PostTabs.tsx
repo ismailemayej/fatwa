@@ -13,7 +13,7 @@ export async function PostTabs({ data }: any) {
 
   return (
     <Tabs defaultValue="account" className=" w-full lg:hidden block">
-      <TabsList className="">
+      <TabsList className=" fixed ">
         <TabsTrigger value="account">All Q&A</TabsTrigger>
         <TabsTrigger value="password">Others</TabsTrigger>
         <TabsTrigger
