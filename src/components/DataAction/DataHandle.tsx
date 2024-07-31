@@ -35,12 +35,15 @@ export const Post = async (data: any, name: any) => {
 };
 //  Get mehtod
 export const Get = async (name: any, querydata: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`);
+  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {
+    cache: "no-store",
+  });
   return res.json();
 };
 //  Update mehtod
 export const Update = async (data: any, name: any, id: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
+    cache:"no-store"
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -57,6 +60,7 @@ export const Update = async (data: any, name: any, id: any) => {
 //Delete mehtod
 export const Delete = async (name: any, id: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
+    cache:'no-store'
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
