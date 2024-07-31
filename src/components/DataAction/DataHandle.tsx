@@ -25,6 +25,7 @@ export const SignUpUser = async (
 //  post mehtod
 export const Post = async (data: any, name: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}`, {
+    cache: "no-store",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export const Get = async (name: any, querydata: any) => {
 //  Update mehtod
 export const Update = async (data: any, name: any, id: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
-    cache:"no-store"
+    cache: "no-store",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -60,7 +61,7 @@ export const Update = async (data: any, name: any, id: any) => {
 //Delete mehtod
 export const Delete = async (name: any, id: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
-    cache:'no-store'
+    cache: "no-store",
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
