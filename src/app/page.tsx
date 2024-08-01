@@ -1,6 +1,5 @@
 import Container from "@/components/container";
 import { Get } from "@/components/DataAction/DataHandle";
-
 import Footer from "@/components/Footer/Footer";
 import LeftSide from "@/components/LeftSide";
 import MainSlider from "@/components/mainSlider/MainSlider";

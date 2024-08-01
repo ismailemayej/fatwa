@@ -1,18 +1,25 @@
 "use client";
 import { Button, Input } from "@nextui-org/react";
-import React, { useEffect } from "react";
+import React, { createRef, useEffect } from "react";
 import login from "../../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useFormState } from "react-dom";
-import { SignUpUser } from "@/components/DataAction/DataHandle";
+import { signUpUser } from "@/components/DataAction/DataHandle";
+import SubmitButton from "@/components/SubmitButtom";
+import { toast } from "sonner";
 const Registration = () => {
-  const [state, formAction] = useFormState(SignUpUser, null);
+  const ref = createRef<HTMLFormElement>();
+  const [state, fromAction] = useFormState(signUpUser, null);
   useEffect(() => {
-    console.log(state);
-  }, [state]);
-
+    if (state && state.success) {
+      toast.success("successfully sign up");
+      ref.current?.reset();
+    } else {
+      toast.error(state?.message);
+    }
+  }, [state, ref]);
   return (
     <div className="w-9/12 mx-auto m-3  p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">
@@ -20,38 +27,40 @@ const Registration = () => {
           <Image src={login} alt="Login image" height={600} width={600} />
         </div>
         <div className="border-t-4 border-green-300 p-3 rounded-xl shadow-xl">
-          <form action={formAction}>
+          <form ref={ref} action={fromAction}>
             <h2 className="lg:text-4xl text-amber-600 text-xl font-bold text-center my-4">
               Registration
             </h2>
             <Input
+              name="name"
               type="text"
               className="mx-auto my-3 outline-none bg-slate-100"
               variant="bordered"
               label="Full Name"
             />
             <Input
+              name="email"
               type="email"
               className="mx-auto my-3 outline-none bg-slate-100"
               variant="bordered"
               label="Email"
             />
             <Input
+              name="phone"
               type="text"
               className="mx-auto my-3 outline-none bg-slate-100"
               variant="bordered"
               label="Phone number"
             />
             <Input
+              name="password"
               type="password"
               className="mx-auto outline-none bg-slate-100"
               variant="bordered"
               label="Password"
-            />{" "}
+            />
             <div className="mx-auto w-full">
-              <Button type="submit" className="my-3 w-full" color="primary">
-                Register
-              </Button>
+              <SubmitButton>Register</SubmitButton>
             </div>
           </form>
           Have an Account? please

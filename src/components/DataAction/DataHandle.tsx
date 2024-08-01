@@ -1,26 +1,68 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth/next";
-export const SignUpUser = async (
-  prevData: FormData,
-  currentFormData: FormData
-) => {
-  const formattedData = JSON.stringify(Object.fromEntries(currentFormData));
-
-  const res = await fetch(`${process.env.BASE_URL}/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: formattedData,
-  });
+import { jwtDecode } from "jwt-decode";
+import { cookies } from "next/headers";
+// for User Register
+export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
+    const formattedData = JSON.stringify(Object.fromEntries(fromData));
+    const res = await fetch(`${process.env.BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+
+      body: formattedData,
+    });
     const data = await res.json();
     return data;
   } catch (error) {
     throw error;
   }
-};
+}
+// for User Login
+export async function loginUser(pre: FormData, fromData: FormData) {
+  try {
+    const formattedData = JSON.stringify(Object.fromEntries(fromData));
+    const res = await fetch(`${process.env.BASE_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: formattedData,
+    });
+    const data = await res.json();
+    if (data.success) {
+      cookies().set("accessToken", data.token);
+      // cookies().set("refreshToken", data.refreshToken);
+      return data;
+    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+// user Information
+export async function userInfo() {
+  try {
+    const accessToken = cookies().get("accessToken")?.value;
+    if (accessToken) {
+      let decodedData = null;
+      decodedData = await jwtDecode(accessToken);
+      return {
+        email: decodedData.email,
+        role: decodedData.role,
+        id: decodedData.id,
+      };
+    }
+    {
+      return null;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
 
 //  post mehtod
 export const Post = async (data: any, name: any) => {
@@ -34,6 +76,7 @@ export const Post = async (data: any, name: any) => {
   });
   return res.json();
 };
+
 //  Get mehtod
 export const Get = async (name: any, querydata: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {

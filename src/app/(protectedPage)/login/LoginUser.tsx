@@ -1,11 +1,28 @@
 "use client";
 import { Button, Input } from "@nextui-org/react";
-import React from "react";
+import React, { createRef, useEffect } from "react";
 import login from "../../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import SubmitButton from "@/components/SubmitButtom";
+import { useFormState } from "react-dom";
+import { toast } from "sonner";
+import { loginUser } from "@/components/DataAction/DataHandle";
+import { useRouter } from "next/navigation";
 const SignIn = () => {
+  const router = useRouter();
+  const ref = createRef<HTMLFormElement>();
+  const [state, fromAction] = useFormState(loginUser, null);
+  useEffect(() => {
+    if (state && state.success) {
+      toast.success("successfully Login");
+      ref.current?.reset();
+      router.push("/dashboard");
+    } else {
+      toast.error(state?.message);
+    }
+  }, [state, ref]);
   return (
     <div className="w-9/12 mx-auto m-3  p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">
@@ -13,26 +30,26 @@ const SignIn = () => {
           <Image src={login} alt="Login image" height={600} width={600} />
         </div>
         <div className="border-t-4 border-green-300 p-3 rounded-xl shadow-xl">
-          <form>
+          <form ref={ref} action={fromAction}>
             <h2 className="lg:text-4xl text-amber-600 text-xl font-bold text-center my-4">
               LogIn
             </h2>
             <Input
+              name="email"
               type="email"
               className="mx-auto my-3 outline-none bg-slate-100"
               variant="bordered"
               label="Email"
             />
             <Input
+              name="password"
               type="password"
               className="mx-auto outline-none bg-slate-100"
               variant="bordered"
               label="Password"
             />
             <div className="mx-auto w-full">
-              <Button className="my-3 w-full" color="primary">
-                Login
-              </Button>
+              <SubmitButton>Login</SubmitButton>
             </div>
           </form>
           You are not a User? Please

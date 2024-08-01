@@ -10,16 +10,12 @@ export async function PostTabs({ data }: any) {
   const allLength = await Get("questions", "");
   const length = allLength?.data;
   const mail = await UserInfo();
-
   return (
-    <Tabs defaultValue="account" className=" w-full lg:hidden block">
-      <TabsList className=" fixed ">
+    <Tabs defaultValue="account" className="lg:hidden">
+      <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="account">All Q&A</TabsTrigger>
         <TabsTrigger value="password">Others</TabsTrigger>
-        <TabsTrigger
-          value="askquestion"
-          className="bangla shadow-lg rounded-xl px-2"
-        >
+        <TabsTrigger value="askquestion" className="bangla">
           প্রশ্ন করুন
         </TabsTrigger>
       </TabsList>
