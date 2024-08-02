@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Fatwa in Bangla",
   description: "Bangla Fatwa knowlage",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar/navbar";
 import type { Metadata } from "next";
 import Container from "@/components/container";
 import LeftSide from "@/components/LeftSide";
@@ -7,12 +6,10 @@ import { ScrollShadow } from "@nextui-org/react";
 import MainSlider from "@/components/mainSlider/MainSlider";
 import { DetailsTabs } from "@/components/Tabs/DetailsTabs";
 import Footer from "@/components/Footer/Footer";
-
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
   description: "Bangla Fatwa knowlage",
 };
-
 export default function DatailsLayout({
   children,
 }: Readonly<{

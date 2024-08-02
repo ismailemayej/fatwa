@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { MainMenuItem, UserMenuItem } from "./MenuItem";
 
-const UserMenu = ({ user }: any) => {
+const UserMenu = () => {
   return (
     <div>
       <ul>

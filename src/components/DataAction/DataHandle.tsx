@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth/next";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
+import { setLocalStorageItem } from "@/utils/LocalStore";
 // for User Register
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
@@ -34,9 +35,7 @@ export async function loginUser(pre: FormData, fromData: FormData) {
     });
     const data = await res.json();
     if (data.success) {
-      cookies().set("accessToken", data.token);
-      // cookies().set("refreshToken", data.refreshToken);
-      return data;
+      return setLocalStorageItem("Token", data.token);
     }
     return data;
   } catch (error) {
@@ -76,7 +75,6 @@ export const Post = async (data: any, name: any) => {
   });
   return res.json();
 };
-
 //  Get mehtod
 export const Get = async (name: any, querydata: any) => {
   const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {

@@ -13,8 +13,10 @@ import { Delete, Get, Update } from "../DataAction/DataHandle";
 import ModalCommon from "../Modal/Modal";
 import Link from "next/link";
 import QuestionPreview from "../QuestionPreview";
+import { useRouter } from "next/navigation";
 
 export default function AllQuestion({ allData }: any) {
+  const router = useRouter();
   // const [data, setData] = useState(allData);
   const [approve, setApprove] = useState(allData.approve);
   // const fetchData = async () => {
@@ -32,6 +34,7 @@ export default function AllQuestion({ allData }: any) {
   const deleteItem = async (qn: number) => {
     try {
       await Delete("questions", qn);
+      router.refresh();
       toast.success("Item deleted successfully");
       // fetchData(); // Re-fetch data after deletion
     } catch (error) {
@@ -42,6 +45,7 @@ export default function AllQuestion({ allData }: any) {
     try {
       const updatedData = { ...allData, approve: !approve };
       await Update(updatedData, "questions", qn);
+      router.refresh();
       setApprove(!approve);
       toast.success("Status request changed successfully");
       // fetchData();

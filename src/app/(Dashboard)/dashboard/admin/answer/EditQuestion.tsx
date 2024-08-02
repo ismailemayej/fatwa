@@ -39,6 +39,7 @@ const EditQuestion = ({ data }: any) => {
       await Update(updatedData, "questions", qn);
       toast.success("Question Approved");
       router.push("/dashboard/admin");
+      router.refresh();
     } catch (error) {
       toast.error("Error approving question");
     }
