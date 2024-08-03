@@ -7,9 +7,8 @@ import PostCard from "@/components/PostCard";
 import RightSide from "@/components/RightSide";
 import { PostTabs } from "@/components/Tabs/PostTabs";
 import { ScrollShadow } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+
 export default async function Home() {
-  const router = useRouter();
   const data = await Get("questions", "approve=true");
   return (
     <>
@@ -23,7 +22,6 @@ export default async function Home() {
             orientation="horizontal"
             className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
           >
-            {router.refresh()}
             <PostTabs data={data} />
             {data?.data.length == 0 && (
               <p className="text-center"> No Data Avalable </p>

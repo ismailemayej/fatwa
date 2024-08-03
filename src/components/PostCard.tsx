@@ -8,6 +8,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import { ConvertE2B } from "./convert/Convert";
+import { useRouter } from "next/navigation";
 
 export default function PostCard({ data }: any) {
   const { qn, question, ans, proof, time, date, headline, _id } = data;
