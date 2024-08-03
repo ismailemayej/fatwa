@@ -7,7 +7,7 @@ import React from "react";
 const Dashboard = async () => {
   const user = await UserInfo();
   const res = await fetch(`${process.env.BASE_URL}/questions?pending=true`, {
-    cache: "reload",
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Network response was not ok");

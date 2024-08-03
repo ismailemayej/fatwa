@@ -20,7 +20,6 @@ const EditQuestion = ({ data }: any) => {
 
   const [isPreview, setIsPreview] = useState(false);
   const editor = useRef(null);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
