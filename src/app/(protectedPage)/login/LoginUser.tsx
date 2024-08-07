@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { loginUser } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
 import { setLocalStorageItem } from "@/utils/LocalStore";
+export const Token = "accessToken";
 const SignIn = () => {
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
@@ -18,7 +19,8 @@ const SignIn = () => {
   useEffect(() => {
     if (state && state.success) {
       toast.success("successfully Login");
-      setLocalStorageItem("accessToken", state.token);
+      setLocalStorageItem(Token, state.token);
+
       ref.current?.reset();
       router.push("/dashboard");
     } else {

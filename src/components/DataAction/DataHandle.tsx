@@ -1,10 +1,8 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth/next";
-import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
-import { setLocalStorageItem } from "@/utils/LocalStore";
 // for User Register
+
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = JSON.stringify(Object.fromEntries(fromData));
@@ -34,30 +32,7 @@ export async function loginUser(pre: FormData, fromData: FormData) {
       body: formattedData,
     });
     const data = await res.json();
-    if (data.success) {
-      return setLocalStorageItem("Token", data.token);
-    }
     return data;
-  } catch (error) {
-    throw error;
-  }
-}
-// user Information
-export async function userInfo() {
-  try {
-    const accessToken = cookies().get("accessToken")?.value;
-    if (accessToken) {
-      let decodedData = null;
-      decodedData = await jwtDecode(accessToken);
-      return {
-        email: decodedData.email,
-        role: decodedData.role,
-        id: decodedData.id,
-      };
-    }
-    {
-      return null;
-    }
   } catch (error) {
     throw error;
   }

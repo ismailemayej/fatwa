@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import { HomeMobileMenu } from "../HomeMenu/HomeMobileMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
 export default function ServerNavbar({ user }: any) {
+  console.log(user);
   return (
     <>
       <nav className="absolute bg-[#05000f2a]  text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
