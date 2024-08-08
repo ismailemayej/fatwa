@@ -1,5 +1,4 @@
 import React from "react";
-
 const DashboardForAdmin = ({ data }: any) => {
   return (
     <div>

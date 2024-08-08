@@ -1,5 +1,3 @@
-import { Get } from "@/components/DataAction/DataHandle";
-import { jwtDecode } from "jwt-decode";
 export function setLocalStorageItem(key: string, value: string): void {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, value);
@@ -18,5 +16,3 @@ export function getLocalStorageItem(key: string) {
     return null;
   }
 }
-
-// user Information
