@@ -16,7 +16,6 @@ const SignIn = () => {
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(loginUser, null);
-  console.log(state);
   useEffect(() => {
     if (state && state.success) {
       toast.success("successfully Login");
@@ -53,7 +52,6 @@ const SignIn = () => {
               variant="bordered"
               label="Password"
             />
-
             <div className="mx-auto w-full">
               <SubmitButton>Login</SubmitButton>
             </div>
