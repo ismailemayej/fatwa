@@ -1,5 +1,5 @@
 "use client";
-import { Button, Input } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import React, { createRef, useEffect } from "react";
 import login from "../../../../public/Login-bro.svg";
 import Image from "next/image";

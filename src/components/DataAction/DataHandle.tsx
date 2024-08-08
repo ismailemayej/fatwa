@@ -1,8 +1,10 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
-import { getLocalStorageItem } from "@/utils/LocalStore";
-import { jwtDecode } from "jwt-decode";
+import { UserInfoByCookie } from "@/utils/Cookies";
+import { decodedDataByJwt } from "@/utils/jwt";
+
 import { getServerSession } from "next-auth/next";
+
 // for User Register
 
 export async function signUpUser(pre: FormData, fromData: FormData) {
@@ -96,15 +98,13 @@ export const Delete = async (name: any, id: any) => {
 // _________________________
 export async function userInformation() {
   try {
-    const AccessToken = getLocalStorageItem("accessToken");
+    const AccessToken = await UserInfoByCookie("accessToken");
     if (AccessToken) {
-      let decodedData = null;
-      decodedData = await jwtDecode(AccessToken);
+      // If decodedDataByJwt is async, you need to await it
+      const decodedData = await decodedDataByJwt(AccessToken);
       // const userData = await Get("users", `email=${decodedData?.email}`);
-      console.log(decodedData);
       return decodedData;
-    }
-    {
+    } else {
       return null;
     }
   } catch (error) {

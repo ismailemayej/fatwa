@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "sonner";
+import { AuthProvider } from "@/lib/authContext";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextUIProvider>
-          <Toaster />
-          {children}
-        </NextUIProvider>
+        <AuthProvider>
+          <NextUIProvider>
+            <Toaster />
+            {children}
+          </NextUIProvider>
+        </AuthProvider>
       </body>
     </html>
   );

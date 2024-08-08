@@ -1,10 +1,18 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
-import { signOut } from "next-auth/react";
 import { HomeMobileMenu } from "../HomeMenu/HomeMobileMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
-export default function ServerNavbar(user: any) {
+import { RemoveCookie } from "@/utils/Cookies";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+export default function ServerNavbar({ user }: any) {
+  const router = useRouter();
+  const handledelete = () => {
+    RemoveCookie("accessToken");
+    router.refresh();
+    toast.success("Delete Successfully");
+  };
   return (
     <>
       <nav className="absolute bg-[#05000f2a]  text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
@@ -30,7 +38,7 @@ export default function ServerNavbar(user: any) {
             </ul>
           </div>
           {user?.email ? (
-            <Button color="primary" onClick={() => signOut()}>
+            <Button color="primary" onClick={() => handledelete()}>
               LogOut
             </Button>
           ) : (
