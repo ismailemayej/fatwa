@@ -10,7 +10,6 @@ type Inputs = {
   question: string;
   _id: string;
 };
-
 const AskQuestion = ({ lengthData, user }: any) => {
   const router = useRouter();
   const now = new Date();
@@ -34,9 +33,9 @@ const AskQuestion = ({ lengthData, user }: any) => {
       ans: "উত্তর লিখুন",
       time: time,
       date: date,
-      userename: user?.name,
-      useremail: user?.email,
-      useremobile: user?.mobile,
+      userename: user?.name || "Fatwa_question",
+      useremail: user?.email || "example@gmail.com",
+      useremobile: user?.mobile || "01858226967",
       proof: "উত্তরে সপক্ষে দলিল দিন",
       role: "user",
       approve: false,

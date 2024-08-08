@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import SubmitButton from "@/components/SubmitButtom";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
-import { loginUser } from "@/components/DataAction/DataHandle";
+import { loginUser, userInformation } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
 import { setLocalStorageItem } from "@/utils/LocalStore";
 export const Token = "accessToken";
@@ -16,11 +16,12 @@ const SignIn = () => {
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(loginUser, null);
+  console.log(state);
   useEffect(() => {
     if (state && state.success) {
       toast.success("successfully Login");
       setLocalStorageItem(Token, state.token);
-
+      userInformation();
       ref.current?.reset();
       router.push("/dashboard");
     } else {
@@ -52,6 +53,7 @@ const SignIn = () => {
               variant="bordered"
               label="Password"
             />
+
             <div className="mx-auto w-full">
               <SubmitButton>Login</SubmitButton>
             </div>
@@ -65,7 +67,6 @@ const SignIn = () => {
           </Link>
           <span className="relative flex justify-center">
             <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"></div>
-
             <span className="relative z-10 bg-white px-6">Or</span>
           </span>
           <div className="flex items-center gap-2 my-3 justify-center">

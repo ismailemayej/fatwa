@@ -1,11 +1,14 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
+import { getLocalStorageItem } from "@/utils/LocalStore";
+import { jwtDecode } from "jwt-decode";
 import { getServerSession } from "next-auth/next";
 // for User Register
 
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = JSON.stringify(Object.fromEntries(fromData));
+    console.log(formattedData);
     const res = await fetch(`${process.env.BASE_URL}/users/register`, {
       method: "POST",
       headers: {
@@ -90,6 +93,25 @@ export const Delete = async (name: any, id: any) => {
   }
   return res.json();
 };
+// _________________________
+export async function userInformation() {
+  try {
+    const AccessToken = getLocalStorageItem("accessToken");
+    if (AccessToken) {
+      let decodedData = null;
+      decodedData = await jwtDecode(AccessToken);
+      // const userData = await Get("users", `email=${decodedData?.email}`);
+      console.log(decodedData);
+      return decodedData;
+    }
+    {
+      return null;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 // get user information
 export const UserInfo = async () => {
   const session = await getServerSession(authOptions);

@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/button";
 import { signOut } from "next-auth/react";
 import { HomeMobileMenu } from "../HomeMenu/HomeMobileMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
-export default function ServerNavbar({ user }: any) {
+export default function ServerNavbar(user: any) {
   console.log(user);
   return (
     <>

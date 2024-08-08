@@ -1,14 +1,12 @@
-"use client";
 import React from "react";
 import ServerNavbar from "./ServerNavbar";
-import { userInformation } from "@/utils/LocalStore";
-const navbar = () => {
-  const user = userInformation();
+
+const Navbar = () => {
   return (
     <div>
-      <ServerNavbar user={user} />
+      <ServerNavbar user="" />
     </div>
   );
 };
 
-export default navbar;
+export default Navbar;

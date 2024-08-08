@@ -3,7 +3,6 @@ import { jwtDecode } from "jwt-decode";
 export function setLocalStorageItem(key: string, value: string): void {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, value);
-    console.log("accessToken", value);
   }
 }
 export function getLocalStorageItem(key: string) {
@@ -21,25 +20,3 @@ export function getLocalStorageItem(key: string) {
 }
 
 // user Information
-export async function userInformation() {
-  try {
-    const AccessToken = getLocalStorageItem("accessToken");
-    if (AccessToken) {
-      let decodedData = null;
-      decodedData = await jwtDecode(AccessToken);
-      console.log(decodedData.email);
-      const userData = await Get(
-        "questions",
-        `useremail=${decodedData?.email}`
-      );
-      console.log(userData?.data);
-
-      return userData?.data;
-    }
-    {
-      return null;
-    }
-  } catch (error) {
-    throw error;
-  }
-}

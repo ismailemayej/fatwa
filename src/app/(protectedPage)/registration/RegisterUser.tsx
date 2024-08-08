@@ -12,6 +12,7 @@ import { toast } from "sonner";
 const Registration = () => {
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(signUpUser, null);
+
   useEffect(() => {
     if (state && state.success) {
       toast.success("successfully sign up");
@@ -58,6 +59,12 @@ const Registration = () => {
               className="mx-auto outline-none bg-slate-100"
               variant="bordered"
               label="Password"
+            />
+            <Input
+              name="role"
+              defaultValue="user"
+              type="text"
+              className="hidden"
             />
             <div className="mx-auto w-full">
               <SubmitButton>Register</SubmitButton>
