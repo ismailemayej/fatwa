@@ -1,11 +1,9 @@
-import { Get, UserInfo } from "@/components/DataAction/DataHandle";
-import Image from "next/image";
-import React from "react";
+import { Get, userInformation } from "@/components/DataAction/DataHandle";
 
+import React from "react";
 const UserDashboard = async () => {
-  const user = await UserInfo();
-  const userEmail = user?.email;
-  const userData = await Get("questions", `useremail=${userEmail}`);
+  const user = await userInformation();
+  const userData = await Get("questions", `useremail=${user?.email}`);
   return (
     <div className="p-3 bg-white rounded-xl m-4">
       {userData.data.length > 0 ? (
@@ -18,7 +16,7 @@ const UserDashboard = async () => {
 
       {user?.name && <div>{user.name}</div>}
       {user?.email && <div>{user.email}</div>}
-      {user?.image && (
+      {/* {user?.image && (
         <Image
           className="rounded-full"
           src={user.image}
@@ -26,7 +24,7 @@ const UserDashboard = async () => {
           width={50}
           alt="User Image"
         />
-      )}
+      )} */}
     </div>
   );
 };

@@ -4,6 +4,11 @@ import { UserInfoByCookie } from "@/utils/Cookies";
 import { decodedDataByJwt } from "@/utils/jwt";
 
 import { getServerSession } from "next-auth/next";
+interface User {
+  email: string;
+  name: string;
+  image?: string;
+}
 
 // for User Register
 
@@ -96,13 +101,11 @@ export const Delete = async (name: any, id: any) => {
   return res.json();
 };
 // _________________________
-export async function userInformation() {
+export async function userInformation(): Promise<User | null> {
   try {
     const AccessToken = await UserInfoByCookie("accessToken");
     if (AccessToken) {
-      // If decodedDataByJwt is async, you need to await it
-      const decodedData = await decodedDataByJwt(AccessToken);
-      // const userData = await Get("users", `email=${decodedData?.email}`);
+      const decodedData = decodedDataByJwt(AccessToken) as User;
       return decodedData;
     } else {
       return null;

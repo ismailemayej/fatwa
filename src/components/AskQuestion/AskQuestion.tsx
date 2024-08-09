@@ -5,12 +5,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Post } from "../DataAction/DataHandle";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/authContext";
 type Inputs = {
   headline: string;
   question: string;
   _id: string;
 };
-const AskQuestion = ({ lengthData, user }: any) => {
+const AskQuestion = ({ lengthData }: any) => {
+  const { user } = useAuth();
   const router = useRouter();
   const now = new Date();
   const time = now.toLocaleTimeString();
