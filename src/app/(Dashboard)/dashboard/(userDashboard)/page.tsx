@@ -5,7 +5,6 @@ import React from "react";
 const UserDashboard = async () => {
   const user = await UserInfo();
   const userEmail = user?.email;
-
   const userData = await Get("questions", `useremail=${userEmail}`);
   return (
     <div className="p-3 bg-white rounded-xl m-4">

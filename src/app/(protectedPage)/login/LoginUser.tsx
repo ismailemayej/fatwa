@@ -23,6 +23,7 @@ const SignIn = () => {
       userInformation();
       ref.current?.reset();
       router.push("/dashboard");
+      router.refresh();
     } else {
       toast.error(state?.message);
     }
