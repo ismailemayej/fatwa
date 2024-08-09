@@ -17,7 +17,6 @@ const AskQuestion = ({ lengthData, user }: any) => {
   const date = now.toLocaleDateString();
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
-
   const {
     register,
     handleSubmit,
