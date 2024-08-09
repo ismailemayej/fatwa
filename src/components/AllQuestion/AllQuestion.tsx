@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { toast } from "sonner";
 import { Eye, EyeOff, FilePenLine, Trash2 } from "lucide-react";
-import { Delete, Get, Update } from "../DataAction/DataHandle";
+import { Delete, Update } from "../DataAction/DataHandle";
 import ModalCommon from "../Modal/Modal";
 import Link from "next/link";
 import QuestionPreview from "../QuestionPreview";

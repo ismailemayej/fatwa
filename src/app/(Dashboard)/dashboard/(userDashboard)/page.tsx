@@ -1,19 +1,11 @@
+import AllQuestion from "@/components/AllQuestion/AllQuestion";
 import { Get, userInformation } from "@/components/DataAction/DataHandle";
-
 import React from "react";
 const UserDashboard = async () => {
   const user = await userInformation();
-  const userData = await Get("questions", `useremail=${user?.email}`);
+  const { data } = await Get("questions", `useremail=${user?.email}`);
   return (
     <div className="p-3 bg-white rounded-xl m-4">
-      {userData.data.length > 0 ? (
-        userData?.data.map((item: any) => (
-          <div key={item._id}>{item.headline}</div>
-        ))
-      ) : (
-        <div>No Any Post</div>
-      )}
-
       {user?.name && <div>{user.name}</div>}
       {user?.email && <div>{user.email}</div>}
       {/* {user?.image && (
@@ -25,6 +17,17 @@ const UserDashboard = async () => {
           alt="User Image"
         />
       )} */}
+      <div className=" bg-white p-3 m-3 rounded-xl shadow-xl grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
+        {data.length > 0 ? (
+          data.map((item: any) => (
+            <div key={item._id} className="">
+              <AllQuestion allData={item} />
+            </div>
+          ))
+        ) : (
+          <div>No Any Post</div>
+        )}
+      </div>
     </div>
   );
 };
