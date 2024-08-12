@@ -6,7 +6,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@nextui-org/button";
-import { Logs } from "lucide-react";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
 import Link from "next/link";
 export function HomeMobileMenu() {
@@ -32,7 +31,7 @@ export function HomeMobileMenu() {
             </svg>
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className=" w-60  bg-sky-700 text-white">
+        <SheetContent side="left" className="w-60 bg-sky-700 text-white">
           <ul>
             <p>Main Menu</p>
             <hr />

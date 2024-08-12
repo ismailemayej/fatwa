@@ -848,23 +848,7 @@
     "@nextui-org/system-rsc" "2.1.5"
     "@react-types/shared" "3.23.1"
 
-"@nextui-org/dropdown@2.1.29":
-  version "2.1.29"
-  resolved "https://registry.npmjs.org/@nextui-org/dropdown/-/dropdown-2.1.29.tgz"
-  integrity sha512-ujHJVHzOcfwqNqlkt14t8YV3AAn03sME7gBxujQcwtDFGYMJeP9pvTU24L/FjBEb3Fd1XdhjwowU/sTuVTK4Yg==
-  dependencies:
-    "@nextui-org/aria-utils" "2.0.24"
-    "@nextui-org/menu" "2.0.28"
-    "@nextui-org/popover" "2.1.27"
-    "@nextui-org/react-utils" "2.0.16"
-    "@nextui-org/shared-utils" "2.0.7"
-    "@react-aria/focus" "3.17.1"
-    "@react-aria/menu" "3.14.1"
-    "@react-aria/utils" "3.24.1"
-    "@react-stately/menu" "3.7.1"
-    "@react-types/menu" "3.9.9"
-
-"@nextui-org/dropdown@^2.1.29":
+"@nextui-org/dropdown@2.1.29", "@nextui-org/dropdown@^2.1.29":
   version "2.1.29"
   resolved "https://registry.yarnpkg.com/@nextui-org/dropdown/-/dropdown-2.1.29.tgz#06bf4f3c48061f4290eaa33be4d697ac547cd6a3"
   integrity sha512-ujHJVHzOcfwqNqlkt14t8YV3AAn03sME7gBxujQcwtDFGYMJeP9pvTU24L/FjBEb3Fd1XdhjwowU/sTuVTK4Yg==
@@ -1707,6 +1691,26 @@
     "@radix-ui/react-use-callback-ref" "1.1.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.7"
+
+"@radix-ui/react-navigation-menu@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.0.tgz#884c9b9fd141cc5db257bd3f6bf3b84e349c6617"
+  integrity sha512-OQ8tcwAOR0DhPlSY3e4VMXeHiol7la4PPdJWhhwJiJA+NLX0SaCaonOkRnI3gCDHoZ7Fo7bb/G6q25fRM2Y+3Q==
+  dependencies:
+    "@radix-ui/primitive" "1.1.0"
+    "@radix-ui/react-collection" "1.1.0"
+    "@radix-ui/react-compose-refs" "1.1.0"
+    "@radix-ui/react-context" "1.1.0"
+    "@radix-ui/react-direction" "1.1.0"
+    "@radix-ui/react-dismissable-layer" "1.1.0"
+    "@radix-ui/react-id" "1.1.0"
+    "@radix-ui/react-presence" "1.1.0"
+    "@radix-ui/react-primitive" "2.0.0"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-controllable-state" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+    "@radix-ui/react-use-previous" "1.1.0"
+    "@radix-ui/react-visually-hidden" "1.1.0"
 
 "@radix-ui/react-popover@^1.1.1":
   version "1.1.1"

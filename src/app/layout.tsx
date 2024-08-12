@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/authContext";
+import { userInformation } from "@/components/DataAction/DataHandle";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",

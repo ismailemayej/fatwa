@@ -6,11 +6,12 @@ import { ScrollShadow } from "@nextui-org/react";
 import MainSlider from "@/components/mainSlider/MainSlider";
 import { DetailsTabs } from "@/components/Tabs/DetailsTabs";
 import Footer from "@/components/Footer/Footer";
+
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
   description: "Bangla Fatwa knowlage",
 };
-export default function DatailsLayout({
+export default async function DatailsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -18,6 +19,7 @@ export default function DatailsLayout({
   return (
     <>
       <MainSlider />
+
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
           <LeftSide />

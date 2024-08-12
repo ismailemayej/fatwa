@@ -1,24 +1,18 @@
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-
 const AuthRouts = ["/login", "/register"];
 const roleBasedPrivateRoutes = {
-  user: [/^\/dashboard$/, "rent-car"],
-  driver: [/^\/dashboard\/driver/],
+  user: [/^\/dashboard$/],
   admin: [/^\/dashboard\/admin/],
 };
-
 type Role = keyof typeof roleBasedPrivateRoutes;
-
 interface DecodedToken extends JwtPayload {
   role: Role;
 }
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const accessToken = cookies().get("accessToken")?.value;
-
   if (!accessToken) {
     if (AuthRouts.includes(pathname)) {
       return NextResponse.next();
@@ -26,7 +20,6 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
   }
-
   let decodedData: DecodedToken | null = null;
 
   try {
@@ -35,7 +28,6 @@ export async function middleware(request: NextRequest) {
     console.error("Invalid token", error);
     return NextResponse.redirect(new URL("/login", request.url));
   }
-
   const role = decodedData?.role;
   if (role && roleBasedPrivateRoutes[role as Role]) {
     const routes = roleBasedPrivateRoutes[role as Role];

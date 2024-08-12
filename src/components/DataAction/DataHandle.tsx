@@ -9,19 +9,15 @@ interface User {
   name: string;
   image?: string;
 }
-
 // for User Register
-
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = JSON.stringify(Object.fromEntries(fromData));
-    console.log(formattedData);
     const res = await fetch(`${process.env.BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-
       body: formattedData,
     });
     const data = await res.json();
@@ -106,7 +102,8 @@ export async function userInformation(): Promise<User | null> {
     const AccessToken = await UserInfoByCookie("accessToken");
     if (AccessToken) {
       const decodedData = decodedDataByJwt(AccessToken) as User;
-      return decodedData;
+      const user = await Get("users", `email=${decodedData?.email}`);
+      return user;
     } else {
       return null;
     }

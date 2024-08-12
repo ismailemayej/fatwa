@@ -1,8 +1,6 @@
 import React from "react";
 import ServerNavbar from "./ServerNavbar";
-import { useAuth } from "@/lib/authContext";
-const Navbar = () => {
-  const { user } = useAuth();
+const Navbar = ({ user }: any) => {
   return (
     <div>
       <ServerNavbar user={user} />

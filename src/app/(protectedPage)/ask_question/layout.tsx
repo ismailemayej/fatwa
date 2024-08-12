@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar/navbar";
 import type { Metadata } from "next";
 import Container from "@/components/container";
 import LeftSide from "@/components/LeftSide";

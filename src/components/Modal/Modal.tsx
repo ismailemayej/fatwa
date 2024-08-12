@@ -43,9 +43,6 @@ export default function ModalCommon({ button, body }: any) {
         <ModalContent>
           {(onClose) => (
             <>
-              {/* <ModalHeader className="flex flex-col gap-1">
-                Modal Title
-              </ModalHeader> */}
               <ScrollShadow
                 hideScrollBar
                 offset={100}

@@ -1,26 +1,16 @@
 "use client";
 import Link from "next/link";
-
 import { HomeMobileMenu } from "../HomeMenu/HomeMobileMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
-import { RemoveCookie } from "@/utils/Cookies";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { CircleUser } from "lucide-react";
 import profile from "../../../public/profile.jpg";
 import Image from "next/image";
 import ProfileMenuOn from "../profileMenu/ProfileMenu";
-
 export default function ServerNavbar({ user }: any) {
-  const router = useRouter();
-  const handledelete = () => {
-    RemoveCookie("accessToken");
-    router.refresh();
-    toast.success("Delete Successfully");
-  };
+  console.log(user);
   return (
     <>
-      <nav className="absolute bg-[#05000f2a]  h-[4rem] text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
+      <nav className="lg:absolute lg:bg-transparent bg-blue-600 h-[4rem] text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex items-center">
             <HomeMobileMenu />
