@@ -16,13 +16,13 @@ const Registration = () => {
   const [state, fromAction] = useFormState(signUpUser, null);
   useEffect(() => {
     if (state && state.success) {
-      toast.success("successfully sign up");
+      toast.success("successfully signed up");
       router.push("/login");
       ref.current?.reset();
     } else {
       toast.error(state?.message);
     }
-  }, [state, ref]);
+  }, [state, ref, router]);
   return (
     <div className="w-9/12 mx-auto m-3 p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">
