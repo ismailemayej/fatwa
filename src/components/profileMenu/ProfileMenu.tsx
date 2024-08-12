@@ -16,7 +16,7 @@ export default function ProfileMenuOn({ menuon }: any) {
   const handledelete = () => {
     RemoveCookie("accessToken");
     router.refresh();
-    toast.success("Delete Successfully");
+    toast.success("LogOut Successfully");
   };
   return (
     <div className="flex items-center gap-4">
@@ -35,9 +35,15 @@ export default function ProfileMenuOn({ menuon }: any) {
             <p className="font-semibold">Signed in as</p>
             <p className="font-semibold">{user?.email}</p>
           </DropdownItem>
-          <DropdownItem key="dashboard" as={Link} href="/dashboard">
-            Dashboard
-          </DropdownItem>
+          {user?.role === "admin" ? (
+            <DropdownItem key="dashboard" as={Link} href="/dashboard/admin">
+              Dashboard
+            </DropdownItem>
+          ) : (
+            <DropdownItem key="dashboard" as={Link} href="/dashboard">
+              Dashboard
+            </DropdownItem>
+          )}
           <DropdownItem
             className="flex-row gap-1 "
             key="edit"

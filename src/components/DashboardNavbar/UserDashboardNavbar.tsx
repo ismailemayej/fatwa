@@ -3,11 +3,19 @@ import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import { signOut } from "next-auth/react";
 import { DashboardMobileMenu } from "@/app/(Dashboard)/dashboard/DashboadMobileMenu";
-
 import UserMenu from "../DashbordMenu/UserMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
+import { useRouter } from "next/navigation";
+import { RemoveCookie } from "@/utils/Cookies";
+import { toast } from "sonner";
 
 export default function UserDashboardNavbar({ user }: any) {
+  const router = useRouter();
+  const handledelete = () => {
+    RemoveCookie("accessToken");
+    router.refresh();
+    toast.success("LogOut Successfully");
+  };
   return (
     <>
       <div className="lg:bg-white lg:text-black text-white bg-[#405189] shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
@@ -40,9 +48,9 @@ export default function UserDashboardNavbar({ user }: any) {
           </div>
           <Button
             color="primary"
-            className="text-white"
+            className="lg:text-black text-white"
             variant="ghost"
-            onClick={() => signOut()}
+            onClick={handledelete}
           >
             LogOut
           </Button>

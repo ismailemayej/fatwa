@@ -8,23 +8,30 @@ import { signIn } from "next-auth/react";
 import SubmitButton from "@/components/SubmitButtom";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
-import { loginUser, userInformation } from "@/components/DataAction/DataHandle";
+import { loginUser } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
-import { setLocalStorageItem } from "@/utils/LocalStore";
+import { useAuth } from "@/lib/authContext";
+import { SetCookies } from "@/utils/Cookies";
 export const Token = "accessToken";
 const SignIn = () => {
+  const { user } = useAuth();
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(loginUser, null);
   useEffect(() => {
     if (state && state.success) {
-      toast.success("successfully signed up");
-      router.push("/login");
+      SetCookies("accessToken", state?.token);
+      toast.success("Successfully signed in");
+      if (user?.role === "user") {
+        router.push("/dashboard");
+      } else if (user?.role === "admin") {
+        router.push("/dashboard/admin");
+      }
       ref.current?.reset();
     } else {
       toast.error(state?.message);
     }
-  }, [state, ref, router]);
+  }, [state, ref, router, user]);
   return (
     <div className="w-9/12 mx-auto m-3  p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">

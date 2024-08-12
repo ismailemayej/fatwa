@@ -1,11 +1,10 @@
 import { Chart } from "@/components/AdminDashboard/Chart";
 import AllQuestion from "@/components/AllQuestion/AllQuestion";
-import { UserInfo } from "@/components/DataAction/DataHandle";
+import { userInformation } from "@/components/DataAction/DataHandle";
 import { ScrollShadow } from "@nextui-org/react";
-import Image from "next/image";
 import React from "react";
 const Dashboard = async () => {
-  const user = await UserInfo();
+  const user = await userInformation();
   const res = await fetch(`${process.env.BASE_URL}/questions?pending=true`, {
     cache: "no-store",
   });
@@ -34,19 +33,11 @@ const Dashboard = async () => {
           <Chart />
         </div>
         <div className="lg:col-span-3 bg-white rounded-xl m-3 shadow-xl p-3">
-          <div className="flex lg:gap-1 gap-3 lg:flex-col">
-            <p className="items-center">
-              <Image
-                src={user?.image || ""}
-                className=" w-32 border-3 border-green-500 h-32 rounded-full "
-                alt=""
-                height={100}
-                width={50}
-              />
-            </p>
+          <div className="flex lg:gap-1 gap-3">
             <h1 className=" mt-2 lg:mt-0 ">
-              <p>{user?.name}</p>
-              <p>{user?.email}</p>
+              <p>Your Name:{user?.name}</p>
+              <p> Your Email: {user?.email}</p>
+              {/* <p> Your phone: {user?.phone}</p> */}
             </h1>
           </div>
         </div>

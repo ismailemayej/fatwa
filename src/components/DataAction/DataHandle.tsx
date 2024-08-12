@@ -38,6 +38,7 @@ export async function loginUser(pre: FormData, fromData: FormData) {
       body: formattedData,
     });
     const data = await res.json();
+    console.log(data);
     return data;
   } catch (error) {
     throw error;

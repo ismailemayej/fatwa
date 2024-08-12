@@ -5,11 +5,13 @@ import TotalPost from "../totalPost.tsx/TotalPost";
 import Tags from "../tags/Tags";
 import Advisement from "../advisement/Advisement";
 import AskQuestion from "../AskQuestion/AskQuestion";
-import { Get, UserInfo } from "../DataAction/DataHandle";
+import { Get, userInformation } from "../DataAction/DataHandle";
+import Link from "next/link";
+import { Button } from "@nextui-org/button";
 export async function PostTabs({ data }: any) {
   const allLength = await Get("questions", "");
   const length = allLength?.data;
-  const mail = await UserInfo();
+  const user = await userInformation();
   return (
     <Tabs defaultValue="account" className="lg:hidden">
       <TabsList className="grid w-full grid-cols-3">
@@ -31,9 +33,18 @@ export async function PostTabs({ data }: any) {
           <PostCard key={ans._id} data={ans} />
         ))}
       </TabsContent>
-      <TabsContent value="askquestion">
-        <AskQuestion lengthData={length.length} useremail={mail?.email} />
-      </TabsContent>
+      {user?.email ? (
+        <TabsContent value="askquestion">
+          <AskQuestion lengthData={length.length} useremail={user?.email} />
+        </TabsContent>
+      ) : (
+        <span>
+          Login First{" "}
+          <Button>
+            <Link href="/login">Login</Link>
+          </Button>{" "}
+        </span>
+      )}
     </Tabs>
   );
 }

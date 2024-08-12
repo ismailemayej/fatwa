@@ -1,11 +1,19 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
-import { signOut } from "next-auth/react";
 import { DashboardMobileMenu } from "@/app/(Dashboard)/dashboard/DashboadMobileMenu";
 import AdminMenu from "../DashbordMenu/AdminMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
+import { RemoveCookie } from "@/utils/Cookies";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 export default function AdminDashboardNavbar({ user }: any) {
+  const router = useRouter();
+  const handledelete = () => {
+    RemoveCookie("accessToken");
+    router.refresh();
+    toast.success("LogOut Successfully");
+  };
   return (
     <>
       <div className="lg:bg-white shadow-xl lg:text-black text-white bg-[#405189] lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
@@ -36,7 +44,12 @@ export default function AdminDashboardNavbar({ user }: any) {
               ))}
             </ul>
           </div>
-          <Button color="primary" variant="ghost" onClick={() => signOut()}>
+          <Button
+            color="primary"
+            className="lg:text-black text-white"
+            variant="ghost"
+            onClick={handledelete}
+          >
             LogOut
           </Button>
         </div>

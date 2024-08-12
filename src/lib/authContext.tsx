@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }: any) => {
       const userData = await userInformation();
       setUser(userData);
     };
-
     fetchUserInformation();
   }, []);
 

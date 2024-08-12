@@ -19,9 +19,8 @@ export default async function DatailsLayout({
   return (
     <>
       <MainSlider />
-
       <Container>
-        <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">
+        <div className="lg:grid lg:gap-3 lg:grid-cols-12 lg:mt-2 mx-3 lg:mx-0 my-2">
           <LeftSide />
           <ScrollShadow
             hideScrollBar
