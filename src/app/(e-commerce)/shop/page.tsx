@@ -1,13 +1,12 @@
 import React from "react";
-import ShopCard from "./component/card";
-import ShopHome from "@/app/(e-commerce)/shop/home/Home";
+import HomePage from "./home/HomePage";
 
-const ShopHome = () => {
+const MainPage = () => {
   return (
     <div>
-      <ShopHome />
+      <HomePage />
     </div>
   );
 };
 
-export default ShopHome;
+export default MainPage;
