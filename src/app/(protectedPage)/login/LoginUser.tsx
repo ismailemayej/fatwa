@@ -12,6 +12,7 @@ import { loginUser } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 import { SetCookies } from "@/utils/Cookies";
+import LoginInfo from "@/components/loginInfo/LoginInfo";
 export const Token = "accessToken";
 const SignIn = () => {
   const { user } = useAuth();
@@ -39,6 +40,7 @@ const SignIn = () => {
           <Image src={login} alt="Login image" height={600} width={600} />
         </div>
         <div className="border-t-4 border-green-300 p-3 rounded-xl shadow-xl">
+          <LoginInfo />
           <form ref={ref} action={fromAction}>
             <h2 className="lg:text-4xl text-amber-600 text-xl font-bold text-center my-4">
               LogIn

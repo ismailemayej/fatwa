@@ -7,10 +7,9 @@ import profile from "../../../public/profile.jpg";
 import Image from "next/image";
 import ProfileMenuOn from "../profileMenu/ProfileMenu";
 export default function ServerNavbar({ user }: any) {
-  console.log(user);
   return (
     <>
-      <nav className="lg:absolute lg:bg-transparent bg-blue-600 h-[4rem] text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
+      <nav className="lg:absolute lg:bg-[#7371f03a] bg-blue-600 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex items-center">
             <HomeMobileMenu />
