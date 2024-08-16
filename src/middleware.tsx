@@ -7,6 +7,7 @@ const roleBasedPrivateRoutes = {
   user: ["/dashboard", "/dashboard/edit", "/ask_question"],
   admin: [
     "/dashboard/admin",
+    "/dashboard/admin/users",
     "/dashboard/edit",
     "/dashboard/admin/pending",
     "/ask_question",

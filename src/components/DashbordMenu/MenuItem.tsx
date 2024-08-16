@@ -5,6 +5,7 @@ import {
   PenIcon,
   Edit,
   LoaderCircle,
+  User2,
 } from "lucide-react";
 export const MainMenuItem = [
   { link: "/", icon: <HomeIcon />, name: "Home" },
@@ -19,6 +20,10 @@ export const UserMenuItem = [
 export const AdminMenuItem = [
   { link: "/dashboard/admin", icon: <LayoutDashboard />, name: "Admin" },
   { link: "/dashboard/admin/pending", icon: <LoaderCircle />, name: "Pending" },
-  // { link: "/", icon: <LayoutDashboard />, name: "Dashboard" },
+  {
+    link: "/dashboard/admin/users",
+    icon: <User2 />,
+    name: "All User",
+  },
   // { link: "/", icon: <LayoutDashboard />, name: "Dashboard" },
 ];
