@@ -1,3 +1,4 @@
+import MainSlider from "@/components/mainSlider/MainSlider";
 import Navbar from "@/components/navbar/navbar";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export default function UserProfileEdit({
 }>) {
   return (
     <div>
-      <Navbar />
+      <MainSlider />
       {children}
     </div>
   );

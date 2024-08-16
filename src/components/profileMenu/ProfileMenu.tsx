@@ -12,9 +12,10 @@ import { toast } from "sonner";
 import { RemoveCookie } from "@/utils/Cookies";
 export default function ProfileMenuOn({ menuon }: any) {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const handledelete = () => {
     RemoveCookie("accessToken");
+    setUser(null);
     router.refresh();
     toast.success("LogOut Successfully");
   };

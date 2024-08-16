@@ -2,10 +2,15 @@ import { JwtPayload, jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-const AuthRouts = ["/login", "/register"];
+const AuthRoutes = ["/login", "/register"];
 const roleBasedPrivateRoutes = {
-  user: [/^\/dashboard$/, "edit", /^\/ask_question$/],
-  admin: [/^\/dashboard\/admin$/, /^\/ask_question$/],
+  user: ["/dashboard", "/dashboard/edit", "/ask_question"],
+  admin: [
+    "/dashboard/admin",
+    "/dashboard/edit",
+    "/dashboard/admin/pending",
+    "/ask_question",
+  ],
 };
 type Role = keyof typeof roleBasedPrivateRoutes;
 interface DecodedToken extends JwtPayload {
@@ -17,7 +22,7 @@ export async function middleware(request: NextRequest) {
   const accessToken = cookies().get("accessToken")?.value;
 
   if (!accessToken) {
-    if (AuthRouts.includes(pathname)) {
+    if (AuthRoutes.includes(pathname)) {
       return NextResponse.next();
     } else {
       return NextResponse.redirect(new URL("/login", request.url));
@@ -40,7 +45,7 @@ export async function middleware(request: NextRequest) {
       routes.some((route) =>
         typeof route === "string"
           ? pathname.includes(route)
-          : route.test(pathname)
+          : (route as RegExp).test(pathname)
       )
     ) {
       return NextResponse.next();

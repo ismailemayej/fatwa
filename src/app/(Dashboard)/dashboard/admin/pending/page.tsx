@@ -1,7 +1,7 @@
 import React from "react";
 import Pending from "./Pending";
 
-const PengingQuestion = () => {
+const PendingQuestion = () => {
   return (
     <div className="m-4 shadow-xl bangla rounded-xl bg-white p-2">
       <Pending />
@@ -9,4 +9,4 @@ const PengingQuestion = () => {
   );
 };
 
-export default PengingQuestion;
+export default PendingQuestion;

@@ -32,19 +32,19 @@ export async function PostTabs({ data }: any) {
         {data?.data?.map((ans: any) => (
           <PostCard key={ans._id} data={ans} />
         ))}
+        {user?.email ? (
+          <TabsContent value="askquestion">
+            <AskQuestion lengthData={length.length} useremail={user?.email} />
+          </TabsContent>
+        ) : (
+          <span>
+            Login First
+            <Button>
+              <Link href="/login">Login</Link>
+            </Button>{" "}
+          </span>
+        )}
       </TabsContent>
-      {user?.email ? (
-        <TabsContent value="askquestion">
-          <AskQuestion lengthData={length.length} useremail={user?.email} />
-        </TabsContent>
-      ) : (
-        <span>
-          Login First{" "}
-          <Button>
-            <Link href="/login">Login</Link>
-          </Button>{" "}
-        </span>
-      )}
     </Tabs>
   );
 }

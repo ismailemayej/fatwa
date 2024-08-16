@@ -4,7 +4,7 @@ import ShopCard from "../component/card";
 const HomePage = () => {
   return (
     <div>
-      <div className="grid lg:grid-cols-4 grid-cols-2">
+      <div className="grid lg:grid-cols-5 grid-cols-2 gap-2">
         <ShopCard />
         <ShopCard />
         <ShopCard />

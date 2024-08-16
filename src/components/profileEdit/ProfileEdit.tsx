@@ -1,34 +1,14 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-type TInputs = {
-  name: string;
-  email: string;
-  phone: number;
-};
+import { Button, Input } from "@nextui-org/react";
+
 const ProfileEdit = ({ user }: any) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TInputs>();
-  const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        {...register("name", { required: true })}
-        defaultValue={user?.name}
-      />
-      {errors.name && <span>This field is required</span>}
-      <input
-        {...register("email", { required: true })}
-        defaultValue={user?.email}
-      />
-      {errors.email && <span>This field is required</span>}
-      <input
-        {...register("phone", { required: true })}
-        defaultValue={user?.phone}
-      />
-      {errors.phone && <span>This field is required</span>}
-      <button type="submit">Update</button>
+    <form className="flex-col my-2 lg:mt-8 lg:mx-auto lg:w-3/5 mx-3">
+      <Input type="text" defaultValue={user?.name} />
+      <Input type="text" defaultValue={user?.phone} className="my-2" />
+      <Input type="text" defaultValue={user?.email} />
+      <Button color="primary" type="submit">
+        Update
+      </Button>
     </form>
   );
 };

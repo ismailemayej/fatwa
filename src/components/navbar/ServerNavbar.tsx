@@ -6,7 +6,13 @@ import { CircleUser } from "lucide-react";
 import profile from "../../../public/profile.jpg";
 import Image from "next/image";
 import ProfileMenuOn from "../profileMenu/ProfileMenu";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 export default function ServerNavbar({ user }: any) {
+  const router = useRouter();
+  useEffect(() => {
+    router.refresh();
+  }, [user, router]);
   return (
     <>
       <nav className="lg:absolute lg:bg-[#7371f03a] bg-blue-600 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">

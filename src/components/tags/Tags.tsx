@@ -1,35 +1,27 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const Tags = () => {
+const Tags = ({ data }: any) => {
+  const router = useRouter();
+  const handleTagClick = (tag: string) => {
+    // Navigate to the URL corresponding to the clicked tag
+    router.push(`/tags/${tag}`);
+  };
+
+  const tagsData = data.flatMap((item: any) => item.tags || []);
+
   return (
-    <div className="bangla grid grid-cols-4 gap-2">
-      <span className="border-1 border-gray-300 py-1 hover:bg-orange-200 rounded-full px-1 text-center">
-        মাসয়ালা
-      </span>
-      <span className="border-1 border-gray-300 py-1 hover:bg-orange-200 rounded-full px-2 text-center">
-        নামাজ
-      </span>
-      <span className="border-1 border-gray-300 py-1 hover:bg-orange-200 rounded-full px-2 text-center">
-        ইমান
-      </span>
-      <span className="text-center border-1 border-gray-300 py-1 hover:bg-orange-200 rounded-full px-2">
-        ঈদ
-      </span>
-      <span className="border-1 text-center border-gray-300 py-1 hover:bg-orange-200 rounded-full px-2">
-        তারবিহ
-      </span>
-      <span className="border-1 border-gray-300 text-center py-1 hover:bg-orange-200 rounded-full px-2">
-        রোজা
-      </span>
-      <span className="border-1 border-gray-300 py-1 text-center hover:bg-orange-200 rounded-full px-2">
-        যাকাত
-      </span>
-      <span className="border-1 border-gray-300 py-1 text-center hover:bg-orange-200 rounded-full px-2">
-        যাকাত
-      </span>
-      <span className="border-1 border-gray-300 py-1 text-center hover:bg-orange-200 rounded-full px-2">
-        যাকাত
-      </span>
+    <div className="bangla flex flex-wrap gap-2">
+      {tagsData.map((tag: any, index: number) => (
+        <span
+          key={index}
+          onClick={() => handleTagClick(tag)}
+          className="cursor-pointer border border-gray-300 py-1 px-3 hover:bg-orange-200 rounded-full text-center"
+        >
+          {tag}
+        </span>
+      ))}
     </div>
   );
 };
