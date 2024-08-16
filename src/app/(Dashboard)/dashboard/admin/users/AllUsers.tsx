@@ -7,10 +7,7 @@ import {
   Avatar,
   Button,
 } from "@nextui-org/react";
-import { useAuth } from "@/lib/authContext";
-
-const AllUsers = () => {
-  const { user } = useAuth();
+const AllUsers = ({ user }: any) => {
   return (
     <Card className="max-w-[340px]">
       <CardBody className="flex-col gap-2">
@@ -19,16 +16,13 @@ const AllUsers = () => {
           className="w-20 h-20 text-large"
         />
         <h1>
-          {" "}
-          <span className="text-xl text-blue-800">Name:</span> {user?.name}{" "}
+          <span className=" text-blue-800">Name:</span> {user?.name}{" "}
         </h1>
         <h1>
-          {" "}
-          <span className="text-xl text-blue-800">Email:</span> {user?.email}{" "}
+          <span className=" text-blue-800">Email:</span> {user?.email}{" "}
         </h1>
         <h1>
-          {" "}
-          <span className="text-xl text-blue-800">Mobile:</span> {user?.mobile}{" "}
+          <span className=" text-blue-800">Mobile:</span> {user?.phone}
         </h1>
       </CardBody>
     </Card>

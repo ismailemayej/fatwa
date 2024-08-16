@@ -1,10 +1,12 @@
 import React from "react";
 import AllUsers from "./AllUsers";
+import { userInformation } from "@/components/DataAction/DataHandle";
 
-const UserPage = () => {
+const UserPage = async () => {
+  const users = await userInformation();
   return (
     <div>
-      <AllUsers />
+      <AllUsers user={users} />
     </div>
   );
 };
