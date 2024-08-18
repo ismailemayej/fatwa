@@ -34,7 +34,7 @@ const SignIn = () => {
     }
   }, [state, ref, router, user]);
   return (
-    <div className="w-9/12 mx-auto m-3  p-2 lg:px-4 rounded-xl">
+    <div className="w-9/12 mx-auto m-3 items-center p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">
         <div className="lg:block hidden">
           <Image src={login} alt="Login image" height={600} width={600} />
