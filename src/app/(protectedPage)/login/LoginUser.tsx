@@ -10,12 +10,10 @@ import { useFormState } from "react-dom";
 import { toast } from "sonner";
 import { loginUser } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/authContext";
 import { SetCookies } from "@/utils/Cookies";
 import LoginInfo from "@/components/loginInfo/LoginInfo";
 export const Token = "accessToken";
 const SignIn = () => {
-  const { user } = useAuth();
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(loginUser, null);

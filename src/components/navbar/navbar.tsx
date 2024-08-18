@@ -20,10 +20,10 @@ export default function Navbar({ user }: any) {
   return (
     <>
       <nav className="lg:absolute lg:bg-[#7371f03a] bg-blue-600 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+        <div className=" lg:mx-7 flex flex-wrap items-center justify-between ">
           <div className="lg:flex-none flex items-center">
             <HomeMobileMenu />
-            <Link href="/" className=" space-x-3 text-2xl">
+            <Link href="/" className="text-2xl">
               Fatwa
             </Link>
           </div>

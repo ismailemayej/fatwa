@@ -31,13 +31,12 @@ const SearchDesktop: React.FC = () => {
       throw err;
     }
   };
-
   return (
     <div>
-      <div className="px-7">
+      <div className="lg:px-7">
         <form
           onSubmit={handleSearch}
-          className="lg:flex flex-col items-center lg:w-full w-4/5 mx-auto"
+          className="lg:flex flex-col items-center lg:w-full w-4/5"
         >
           <Input
             onChange={handleInputChange}
@@ -47,15 +46,15 @@ const SearchDesktop: React.FC = () => {
             className="lg:reletive z-10 lg:block hidden rounded-xl bg-white w-96"
           />
           <div className="lg:hidden block">
-            <div className="flex w-full max-w-sm items-center space-x-2">
+            <div className="flex w-full max-w-xs sm:max-w-sm md:max-w-md items-center space-x-2">
               <Input
-                type="email"
+                type="text"
                 placeholder="Search..."
-                className="rounded-xl md:relative"
+                className="rounded-xl w-full md:w-auto"
               />
               <button
                 type="submit"
-                className=" md:absolute hover:bg-slate-50 rounded-full p-1 hover:text-black hover:shadow-lg"
+                className="hover:bg-slate-50 rounded-full p-2 md:p-3 hover:text-black hover:shadow-lg"
               >
                 <Search />
               </button>

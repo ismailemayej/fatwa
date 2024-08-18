@@ -1,7 +1,6 @@
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-
 const AuthRoutes = ["/login", "/register"];
 const roleBasedPrivateRoutes = {
   user: ["/dashboard", "/dashboard/edit", "/ask_question"],
@@ -21,7 +20,6 @@ interface DecodedToken extends JwtPayload {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const accessToken = cookies().get("accessToken")?.value;
-
   if (!accessToken) {
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.next();
@@ -29,7 +27,6 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
   }
-
   let decodedData: DecodedToken | null = null;
   try {
     decodedData = jwtDecode<DecodedToken>(accessToken);
