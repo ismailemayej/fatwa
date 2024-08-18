@@ -1,19 +1,18 @@
 "use client";
-import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import React, { useState } from "react";
+import { Input } from "../ui/input";
+import { Button } from "@nextui-org/button";
 import { Search } from "lucide-react";
-const SearchFunction: React.FC = () => {
+const SearchDesktop: React.FC = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim() === "") return;
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/search?query=${query}`,
@@ -40,18 +39,34 @@ const SearchFunction: React.FC = () => {
           onSubmit={handleSearch}
           className="lg:flex flex-col items-center lg:w-full w-4/5 mx-auto"
         >
-          <input
+          <Input
             onChange={handleInputChange}
-            value={query}
             type="text"
-            className="p-2 border border-neutral-800 focus:ring-2 focus:ring-teal-500 lg:w-96 w-[60%] relative z-10 rounded-xl outline-none bg-white placeholder:text-neutral-700"
-            placeholder="type your question.."
+            placeholder="Search your Question.."
+            value={query}
+            className="lg:reletive z-10 lg:block hidden rounded-xl bg-white w-96"
           />
-          <Button type="submit" color="primary" className="text-xl w-1/12 z-10">
-            <span className="lg:block hidden">Search</span>
-            <span className="lg:hidden block">
-              <Search />
-            </span>
+          <div className="lg:hidden block">
+            <div className="flex w-full max-w-sm items-center space-x-2">
+              <Input
+                type="email"
+                placeholder="Search..."
+                className="rounded-xl md:relative"
+              />
+              <button
+                type="submit"
+                className=" md:absolute hover:bg-slate-50 rounded-full p-1 hover:text-black hover:shadow-lg"
+              >
+                <Search />
+              </button>
+            </div>
+          </div>
+          <Button
+            color="primary"
+            type="submit"
+            className=" lg:my-2 w-1/12 lg:z-10 text-sm lg:block hidden  border-white border lg:px-4 "
+          >
+            Search
           </Button>
         </form>
         <ul className="absolute mt-3 px-3 lg:left-44 left-20 lg:right-44 right-20">
@@ -66,4 +81,4 @@ const SearchFunction: React.FC = () => {
   );
 };
 
-export default SearchFunction;
+export default SearchDesktop;

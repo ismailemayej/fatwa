@@ -1,8 +1,9 @@
 import Container from "@/components/container";
-import { Get } from "@/components/DataAction/DataHandle";
+import { Get, userInformation } from "@/components/DataAction/DataHandle";
 import Footer from "@/components/Footer/Footer";
 import LeftSide from "@/components/LeftSide";
 import MainSlider from "@/components/mainSlider/MainSlider";
+import Navbar from "@/components/navbar/navbar";
 import PostCard from "@/components/PostCard";
 import RightSide from "@/components/RightSide";
 import { PostTabs } from "@/components/Tabs/PostTabs";
@@ -10,8 +11,10 @@ import { ScrollShadow } from "@nextui-org/react";
 
 export default async function Home() {
   const data = await Get("questions", "approve=true");
+  const user = await userInformation();
   return (
     <>
+      <Navbar user={user} />
       <MainSlider />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 mx-3 lg:mx-0 my-2">

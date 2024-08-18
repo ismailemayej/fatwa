@@ -61,7 +61,7 @@ export const BackgroundSlider = React.memo(
     return (
       <div
         className={cn(
-          "absolute lg:w-[102%] lg:h-[102%] z-0 [mask-repeat:no-repeat] lg:flex items-center justify-center",
+          "lg:absolute lg:w-[102%] lg:h-[102%] z-0 [mask-repeat:no-repeat] lg:flex items-center justify-center",
           className
         )}
       >

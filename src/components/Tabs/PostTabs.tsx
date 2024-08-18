@@ -39,12 +39,18 @@ export async function PostTabs({ data }: any) {
         {user?.email ? (
           <AskQuestion lengthData={length.length} useremail={user?.email} />
         ) : (
-          <span className="flex justify-center items-center">
-            Login First
-            <Button color="primary" className="mx-3">
-              <Link href="/login">Login</Link>
-            </Button>{" "}
-          </span>
+          <>
+            <div className="items-center bangla">
+              প্রশ্ন করতে হলে আপনাকে মেম্বার হতে হবে। যদি রেজিষ্ট্রেশন করা থাকে
+              তাহলে লগিন করুন। না হয় রেজিষ্ট্রেশন করে নিন।
+            </div>
+            <Link
+              href="/login"
+              className="bg-red-500 py-1 px-3 rounded-xl text-white hover:bg-white hover:border hover:border-red-800 hover:transition-all hover:text-red-500 items-center"
+            >
+              Login/Registration
+            </Link>
+          </>
         )}
       </TabsContent>
     </Tabs>
