@@ -23,18 +23,14 @@ const SignIn = () => {
     if (state && state.success) {
       SetCookies("accessToken", state?.token);
       toast.success("Successfully signed in");
-      if (user?.role === "user") {
-        router.push("/dashboard");
-      } else if (user?.role === "admin") {
-        router.push("/dashboard/admin");
-      }
       ref.current?.reset();
-    } else {
+      router.push("/");
+    } else if (state) {
       toast.error(state?.message);
     }
-  }, [state, ref, router, user]);
+  }, [state, ref, router]);
   return (
-    <div className="w-9/12 mx-auto m-3 items-center p-2 lg:px-4 rounded-xl">
+    <div className="lg:w-9/12 mx-auto lg:m-3 px-4 items-center p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 items-center  ">
         <div className="lg:block hidden">
           <Image src={login} alt="Login image" height={600} width={600} />

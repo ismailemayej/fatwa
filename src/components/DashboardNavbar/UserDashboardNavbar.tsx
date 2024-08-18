@@ -8,11 +8,13 @@ import { MainMenuItem } from "../DashbordMenu/MenuItem";
 import { useRouter } from "next/navigation";
 import { RemoveCookie } from "@/utils/Cookies";
 import { toast } from "sonner";
-
-export default function UserDashboardNavbar({ user }: any) {
+import { useAuth } from "@/lib/authContext";
+export default function UserDashboardNavbar() {
+  const { setUser } = useAuth();
   const router = useRouter();
   const handledelete = () => {
     RemoveCookie("accessToken");
+    setUser(null);
     router.refresh();
     toast.success("LogOut Successfully");
   };

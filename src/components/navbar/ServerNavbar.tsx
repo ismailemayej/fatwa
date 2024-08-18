@@ -7,12 +7,17 @@ import profile from "../../../public/profile.jpg";
 import Image from "next/image";
 import ProfileMenuOn from "../profileMenu/ProfileMenu";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-export default function ServerNavbar({ user }: any) {
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/authContext";
+export default function ServerNavbar({ users }: any) {
+  const { user } = useAuth();
   const router = useRouter();
+  const path = usePathname();
   useEffect(() => {
-    router.refresh();
-  }, [user, router]);
+    if (path === "/") {
+      router.refresh();
+    }
+  }, [user, router, path]);
   return (
     <>
       <nav className="lg:absolute lg:bg-[#7371f03a] bg-blue-600 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
@@ -37,7 +42,7 @@ export default function ServerNavbar({ user }: any) {
               ))}
             </ul>
           </div>
-          {user?.email ? (
+          {users?.email ? (
             <>
               <ProfileMenuOn
                 menuon={

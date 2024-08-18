@@ -7,10 +7,13 @@ import { MainMenuItem } from "../DashbordMenu/MenuItem";
 import { RemoveCookie } from "@/utils/Cookies";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-export default function AdminDashboardNavbar({ user }: any) {
+import { useAuth } from "@/lib/authContext";
+export default function AdminDashboardNavbar() {
+  const { setUser } = useAuth();
   const router = useRouter();
-  const handledelete = () => {
+  const handleLogout = () => {
     RemoveCookie("accessToken");
+    setUser(null);
     router.refresh();
     toast.success("LogOut Successfully");
   };
@@ -48,7 +51,7 @@ export default function AdminDashboardNavbar({ user }: any) {
             color="primary"
             className="lg:text-black text-white"
             variant="ghost"
-            onClick={handledelete}
+            onClick={handleLogout}
           >
             LogOut
           </Button>

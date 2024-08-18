@@ -1,4 +1,3 @@
-import { Divider } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
 import { AdminMenuItem, MainMenuItem } from "./MenuItem";
