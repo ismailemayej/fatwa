@@ -26,20 +26,22 @@ export async function PostTabs({ data }: any) {
         <Trending />
         <TotalPost />
         <Advisement />
-        <Tags />
+        <span className="my-2">
+          <Tags data={length} />
+        </span>
       </TabsContent>
       <TabsContent value="account">
         {data?.data?.map((ans: any) => (
           <PostCard key={ans._id} data={ans} />
         ))}
+      </TabsContent>
+      <TabsContent value="askquestion">
         {user?.email ? (
-          <TabsContent value="askquestion">
-            <AskQuestion lengthData={length.length} useremail={user?.email} />
-          </TabsContent>
+          <AskQuestion lengthData={length.length} useremail={user?.email} />
         ) : (
-          <span>
+          <span className="flex justify-center items-center">
             Login First
-            <Button>
+            <Button color="primary" className="mx-3">
               <Link href="/login">Login</Link>
             </Button>{" "}
           </span>

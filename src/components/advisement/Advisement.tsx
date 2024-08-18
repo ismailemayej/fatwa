@@ -6,7 +6,7 @@ const Advisement = () => {
   return (
     <div className="flex justify-center items-center text-2xl lg:h-[160px] h-[180px] w-full mb-2">
       <Image
-        className="p-2 rounded-xl"
+        className="p-2 my-3 rounded-xl"
         src={ads}
         height={500}
         width={500}
