@@ -28,28 +28,34 @@ const SignIn = () => {
     }
   }, [state, ref, router]);
   return (
-    <div className="lg:w-9/12 mx-auto lg:m-3 px-4 p-2 lg:px-4 rounded-xl">
-      <div className="grid lg:grid-cols-2 items-center  ">
+    <div className=" lg:m-2 p-2 lg:px-4 rounded-xl">
+      <div className="grid lg:grid-cols-2 gap-10">
         <div className="lg:block hidden">
-          <Image src={login} alt="Login image" height={600} width={600} />
+          <Image
+            className=""
+            src={login}
+            alt="Login image"
+            height={600}
+            width={600}
+          />
         </div>
-        <div className="border-t-4 border-green-300 p-3 rounded-xl shadow-xl">
+        <div className="lg:border-t-4 mx-10 lg:border-green-300 lg:bg-white p-3 m-3 rounded-xl shadow-xl">
           <LoginInfo />
           <form ref={ref} action={fromAction}>
-            <h2 className="lg:text-4xl text-amber-600 text-xl font-bold text-center my-4">
+            <h2 className="lg:text-4xl text-2xl text-amber-600  font-bold text-center my-4">
               LogIn
             </h2>
             <Input
               name="email"
               type="email"
-              className="mx-auto my-3 outline-none bg-slate-100"
+              className="mx-auto my-3 outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Email"
             />
             <Input
               name="password"
               type="password"
-              className="mx-auto outline-none bg-slate-100"
+              className="mx-auto outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Password"
             />
@@ -57,16 +63,18 @@ const SignIn = () => {
               <SubmitButton>Login</SubmitButton>
             </div>
           </form>
-          You are not a User? Please
+          <span className="lg:text-black text-white">
+            You are not a User? Please
+          </span>
           <Link
-            className="text-blue-500 ml-2 my-2 font-semibold hover:text-green-500"
+            className="lg:text-blue-500 text-yellow-400 ml-2 my-2 font-semibold hover:text-green-500"
             href="/registration"
           >
             Register
           </Link>
           <span className="relative flex justify-center">
             <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"></div>
-            <span className="relative z-10 bg-white px-6">Or</span>
+            <span className="relative z-10  px-6">Or</span>
           </span>
           <div className="flex items-center gap-2 my-3 justify-center">
             <button
