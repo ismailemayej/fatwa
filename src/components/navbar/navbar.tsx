@@ -27,7 +27,7 @@ export default function Navbar({ user }: any) {
               Fatwa
             </Link>
           </div>
-          <div className="lg:hidden block">
+          <div className="lg:hidden block ml-2">
             <SearchDesktop />
           </div>
           <div className="hidden w-full md:flex md:w-auto" id="navbar-sticky">
