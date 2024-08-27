@@ -28,7 +28,7 @@ const SignIn = () => {
     }
   }, [state, ref, router]);
   return (
-    <div className=" lg:m-2 p-2 lg:px-4 rounded-xl">
+    <div className=" lg:m-2 lg:p-2 lg:px-4 rounded-xl">
       <div className="grid lg:grid-cols-2 lg:gap-10">
         <div className="lg:block hidden">
           <Image
