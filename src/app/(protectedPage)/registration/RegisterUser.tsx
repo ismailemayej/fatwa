@@ -24,41 +24,47 @@ const Registration = () => {
     }
   }, [state, ref, router]);
   return (
-    <div className="w-9/12 mx-auto m-3 p-2 lg:px-4 rounded-xl">
-      <div className="grid lg:grid-cols-2 items-center  ">
+    <div className=" lg:m-2 lg:p-2 lg:px-4 rounded-xl">
+      <div className="grid lg:grid-cols-2 lg:gap-10">
         <div className="lg:block hidden">
-          <Image src={login} alt="Login image" height={600} width={600} />
+          <Image
+            className=""
+            src={login}
+            alt="Login image"
+            height={600}
+            width={600}
+          />
         </div>
-        <div className="border-t-4 border-green-300 p-3 rounded-xl shadow-xl">
+        <div className="lg:border-t-4 lg:mx-10 lg:border-green-300 lg:bg-white p-3 m-3 rounded-xl shadow-xl">
           <form ref={ref} action={fromAction}>
-            <h2 className="lg:text-4xl text-amber-600 text-xl font-bold text-center my-4">
+            <h2 className="lg:text-4xl text-2xl text-amber-600  font-bold text-center my-4">
               Registration
             </h2>
             <Input
               name="name"
               type="text"
-              className="mx-auto my-3 outline-none bg-slate-100"
+              className="mx-auto my-3 outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Full Name"
             />
             <Input
               name="email"
               type="email"
-              className="mx-auto my-3 outline-none bg-slate-100"
+              className="mx-auto my-3 outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Email"
             />
             <Input
               name="phone"
               type="text"
-              className="mx-auto my-3 outline-none bg-slate-100"
+              className="mx-auto my-3 outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Phone number"
             />
             <Input
               name="password"
               type="password"
-              className="mx-auto outline-none bg-slate-100"
+              className="mx-auto outline-none rounded-xl bg-slate-100"
               variant="bordered"
               label="Password"
             />
@@ -72,9 +78,11 @@ const Registration = () => {
               <SubmitButton>Register</SubmitButton>
             </div>
           </form>
-          Have an Account? please
+          <span className="lg:text-black text-white">
+            Have an Account? please
+          </span>
           <Link
-            className="text-blue-500 ml-2 my-2 font-semibold hover:text-green-500"
+            className="lg:text-blue-500 text-yellow-400 ml-2 my-2 font-semibold hover:text-green-500"
             href="/login"
           >
             Login

@@ -7,7 +7,6 @@ import Advisement from "../advisement/Advisement";
 import AskQuestion from "../AskQuestion/AskQuestion";
 import { Get, userInformation } from "../DataAction/DataHandle";
 import Link from "next/link";
-import { Button } from "@nextui-org/button";
 export async function PostTabs({ data }: any) {
   const allLength = await Get("questions", "");
   const length = allLength?.data;
@@ -15,15 +14,12 @@ export async function PostTabs({ data }: any) {
   return (
     <Tabs defaultValue="account" className="lg:hidden">
       <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger className="bg-red-300" value="account">
-          All Q&A
-        </TabsTrigger>
+        <TabsTrigger value="account">All Q&A</TabsTrigger>
         <TabsTrigger value="password">Others</TabsTrigger>
         <TabsTrigger value="askquestion" className="bangla">
           প্রশ্ন করুন
         </TabsTrigger>
       </TabsList>
-
       <TabsContent value="password">
         <Trending />
         <TotalPost />
