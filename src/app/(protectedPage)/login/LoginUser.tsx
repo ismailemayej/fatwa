@@ -39,7 +39,7 @@ const SignIn = () => {
             width={600}
           />
         </div>
-        <div className="lg:border-t-4 mx-10 lg:border-green-300 lg:bg-white p-3 m-3 rounded-xl shadow-xl">
+        <div className="lg:border-t-4 lg:mx-10 lg:border-green-300 lg:bg-white p-3 m-3 rounded-xl shadow-xl">
           <LoginInfo />
           <form ref={ref} action={fromAction}>
             <h2 className="lg:text-4xl text-2xl text-amber-600  font-bold text-center my-4">
