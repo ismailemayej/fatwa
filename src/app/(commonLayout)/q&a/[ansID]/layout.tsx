@@ -6,6 +6,8 @@ import { ScrollShadow } from "@nextui-org/react";
 import MainSlider from "@/components/mainSlider/MainSlider";
 import { DetailsTabs } from "@/components/Tabs/DetailsTabs";
 import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/navbar/navbar";
+import { userInformation } from "@/components/DataAction/DataHandle";
 
 export const metadata: Metadata = {
   title: "Fatwa in Bangla",
@@ -16,8 +18,10 @@ export default async function DatailsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await userInformation();
   return (
     <>
+      <Navbar user={user} />
       <MainSlider />
       <Container>
         <div className="lg:grid lg:gap-3 lg:grid-cols-12 lg:mt-2 mx-3 lg:mx-0 my-2">

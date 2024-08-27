@@ -19,11 +19,11 @@ export default function Navbar({ user }: any) {
   }, [user, router, path]);
   return (
     <>
-      <nav className="lg:absolute lg:bg-[#7371f03a] bg-blue-600 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
-        <div className=" lg:mx-7 flex flex-wrap items-center justify-between ">
-          <div className="lg:flex-none flex items-center">
+      <nav className="lg:absolute lg:bg-[#f9faf81a] bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white lg:px-0 px-2 py-3 w-full z-20 top-0 start-0">
+        <div className=" lg:mx-7 flex items-center justify-between ">
+          <div className="">
             <HomeMobileMenu />
-            <Link href="/" className="text-2xl">
+            <Link href="/" className="text-2xl lg:block hidden">
               Fatwa
             </Link>
           </div>
@@ -47,6 +47,7 @@ export default function Navbar({ user }: any) {
           {user?.email ? (
             <>
               <ProfileMenuOn
+                user={user}
                 menuon={
                   <Image
                     src={profile}

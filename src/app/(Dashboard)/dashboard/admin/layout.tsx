@@ -11,11 +11,11 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="lg:grid lg:grid-cols-12  bg-[#eeebeb]">
-      <div className=" bg-[#405189] text-[#c4c6cc] p-2 h-screen lg:col-span-2 lg:block hidden">
+    <div className="lg:grid lg:grid-cols-12 ">
+      <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white p-2 h-screen lg:col-span-2 lg:block hidden">
         <AdminMenu />
       </div>
-      <div className=" col-span-10">
+      <div className="col-span-10">
         <AdminDashboardNavbar />
         {children}
       </div>

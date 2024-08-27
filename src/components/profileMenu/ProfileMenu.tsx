@@ -10,9 +10,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { RemoveCookie } from "@/utils/Cookies";
-export default function ProfileMenuOn({ menuon }: any) {
+export default function ProfileMenuOn({ menuon, user }: any) {
   const router = useRouter();
-  const { user, setUser } = useAuth();
+  const { setUser } = useAuth();
   const handledelete = () => {
     RemoveCookie("accessToken");
     setUser(null);
@@ -20,8 +20,11 @@ export default function ProfileMenuOn({ menuon }: any) {
     toast.success("LogOut Successfully");
   };
   return (
-    <div className="flex items-center gap-4">
-      <Dropdown placement="bottom-end">
+    <div className="flex items-center gap-4 ">
+      <Dropdown
+        placement="bottom-end"
+        className="text-white bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900"
+      >
         <DropdownTrigger>
           {menuon}
           {/* <Avatar
@@ -35,14 +38,19 @@ export default function ProfileMenuOn({ menuon }: any) {
           <DropdownItem key="profile" className="h-14 gap-2">
             <span className="flex gap-1 items-center justify-between ">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold bg-neutral-900 rounded-xl text-white shadow-orange-900 px-2">
+              <p className="font-semibold bg-white rounded-xl text-black shadow-orange-900 px-2">
                 {user?.role === "admin" ? "admin" : "user"}
               </p>
             </span>
             <p className="font-semibold">{user?.email}</p>
           </DropdownItem>
           {user?.role === "admin" ? (
-            <DropdownItem key="dashboard" as={Link} href="/dashboard/admin">
+            <DropdownItem
+              key="dashboard"
+              className=" hover:text-white"
+              as={Link}
+              href="/dashboard/admin"
+            >
               Dashboard
             </DropdownItem>
           ) : (

@@ -3,6 +3,8 @@ import AllQuestion from "@/components/AllQuestion/AllQuestion";
 import { userInformation } from "@/components/DataAction/DataHandle";
 import { ScrollShadow } from "@nextui-org/react";
 import React from "react";
+import Total from "./adminCard/Total";
+import Scrollbar from "./adminCard/postInfo";
 const Dashboard = async () => {
   const user = await userInformation();
   const res = await fetch(`${process.env.BASE_URL}/questions?pending=true`, {
@@ -30,6 +32,12 @@ const Dashboard = async () => {
       {/* 1st lavel */}
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="bg-white rounded-xl m-3 p-2 shadow-xl lg:col-span-9">
+          <div className="lg:flex gap-6 items-center">
+            <Total>
+              <Scrollbar />
+            </Total>
+            <Total> Total </Total>
+          </div>
           <Chart />
         </div>
         <div className="lg:col-span-3 bg-white rounded-xl m-3 shadow-xl p-3">

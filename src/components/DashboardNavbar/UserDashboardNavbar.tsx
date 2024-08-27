@@ -1,33 +1,25 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@nextui-org/button";
-import { signOut } from "next-auth/react";
+
 import { DashboardMobileMenu } from "@/app/(Dashboard)/dashboard/DashboadMobileMenu";
 import UserMenu from "../DashbordMenu/UserMenu";
 import { MainMenuItem } from "../DashbordMenu/MenuItem";
-import { useRouter } from "next/navigation";
-import { RemoveCookie } from "@/utils/Cookies";
-import { toast } from "sonner";
+import profile from "../../../public/profile.jpg";
 import { useAuth } from "@/lib/authContext";
-export default function UserDashboardNavbar() {
-  const { setUser } = useAuth();
-  const router = useRouter();
-  const handledelete = () => {
-    RemoveCookie("accessToken");
-    setUser(null);
-    router.refresh();
-    toast.success("LogOut Successfully");
-  };
+import { CircleUser } from "lucide-react";
+import ProfileMenuOn from "../profileMenu/ProfileMenu";
+import Image from "next/image";
+export default function UserDashboardNavbar({ user }: any) {
   return (
     <>
-      <div className="lg:bg-white lg:text-black text-white bg-[#405189] shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
+      <div className="lg:bg-white lg:text-black text-white bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 shadow-xl lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div className="lg:flex-none flex items-center gap-2">
             <DashboardMobileMenu>
               <UserMenu />
             </DashboardMobileMenu>
             <Link href="/" className="flex items-center space-x-3">
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
                 Fatwa
               </span>
             </Link>
@@ -42,20 +34,39 @@ export default function UserDashboardNavbar() {
                     className=" hover:border-b-3 hover:border-yellow-600 hover:px-1 hover:transition-all hover:scale-95"
                     aria-current="page"
                   >
-                    <span className="text-sm font-medium">{item.name}</span>
+                    <span className="text-sm text-white font-medium">
+                      {item.name}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <Button
-            color="primary"
-            className="lg:text-black text-white"
-            variant="ghost"
-            onClick={handledelete}
-          >
-            LogOut
-          </Button>
+          {user?.email ? (
+            <>
+              <ProfileMenuOn
+                menuon={
+                  <Image
+                    src={profile}
+                    height={40}
+                    width={40}
+                    alt="profile"
+                    className="border-2 border-white rounded-full"
+                  />
+                }
+              />
+            </>
+          ) : (
+            <Link href="/login">
+              <CircleUser className="lg:hidden block size-10" />
+              <button
+                type="button"
+                className="text-white lg:block hidden border-1 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Login or Registration
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </>

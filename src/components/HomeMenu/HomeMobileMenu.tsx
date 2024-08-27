@@ -10,7 +10,7 @@ import { MainMenuItem } from "../DashbordMenu/MenuItem";
 import Link from "next/link";
 export function HomeMobileMenu() {
   return (
-    <div className=" lg:hidden block">
+    <div className=" lg:hidden block ">
       <Sheet>
         <SheetTrigger asChild>
           <button className=" rounded-xl text-white p-0.5">
@@ -31,7 +31,10 @@ export function HomeMobileMenu() {
             </svg>
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-60 bg-sky-700 text-white">
+        <SheetContent
+          side="left"
+          className="w-60 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white"
+        >
           <ul>
             <p>Main Menu</p>
             <hr />

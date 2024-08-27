@@ -37,7 +37,10 @@ export function DashboardMobileMenu({
             </svg>
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className=" w-60 bg-sky-700 text-white">
+        <SheetContent
+          side="left"
+          className=" w-60 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white"
+        >
           {children}
 
           <SheetFooter>

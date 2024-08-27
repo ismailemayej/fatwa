@@ -22,6 +22,7 @@ const config = {
     },
     extend: {
       colors: {
+        grad: "bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900",
         // border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

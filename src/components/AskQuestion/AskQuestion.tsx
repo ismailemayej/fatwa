@@ -6,6 +6,7 @@ import { Post } from "../DataAction/DataHandle";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
+import SimpleButton from "../button/Button";
 type Inputs = {
   headline: string;
   question: string;
@@ -119,9 +120,7 @@ const AskQuestion = ({ lengthData }: any) => {
           ))}
         </div>
 
-        <Button color="primary" type="submit" className="w-full my-2">
-          Send
-        </Button>
+        <SimpleButton type="submit">Send</SimpleButton>
       </form>
     </>
   );

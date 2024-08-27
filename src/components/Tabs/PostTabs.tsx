@@ -15,7 +15,9 @@ export async function PostTabs({ data }: any) {
   return (
     <Tabs defaultValue="account" className="lg:hidden">
       <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="account">All Q&A</TabsTrigger>
+        <TabsTrigger className="bg-red-300" value="account">
+          All Q&A
+        </TabsTrigger>
         <TabsTrigger value="password">Others</TabsTrigger>
         <TabsTrigger value="askquestion" className="bangla">
           প্রশ্ন করুন

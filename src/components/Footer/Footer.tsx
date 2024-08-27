@@ -1,7 +1,7 @@
 import logo from "@/assets/relief donation.png";
 const Footer = () => {
   return (
-    <footer className=" bg-gray-900 text-white">
+    <footer className=" bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -17,7 +17,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">
                 Resources
               </h2>
-              <ul className="  dark:text-gray-400 font-medium">
+              <ul className="  dark:text-white font-medium">
                 <li className="mb-4">
                   <a href="https://flowbite.com/" className="hover:underline">
                     Flowbite
@@ -34,7 +34,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
                 Follow us
               </h2>
               <ul className="  dark:text-gray-400 font-medium">
@@ -57,7 +57,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
                 Legal
               </h2>
               <ul className="  dark:text-gray-400 font-medium">
