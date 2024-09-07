@@ -61,7 +61,7 @@ export const BackgroundSlider = React.memo(
     return (
       <div
         className={cn(
-          "lg:absolute bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 lg:w-[102%] lg:h-[102%] z-0 [mask-repeat:no-repeat] lg:flex items-center justify-center",
+          "lg:absolute  lg:w-[102%] lg:h-[80%] z-0 [mask-repeat:no-repeat] lg:flex items-center justify-center",
           className
         )}
       >

@@ -50,7 +50,7 @@ const SearchDesktop: React.FC = () => {
             type="text"
             placeholder="Search your Question..."
             value={query}
-            className="lg:relative z-10 lg:block hidden rounded-xl bg-white w-96"
+            className=" z-10 lg:block hidden rounded-xl bg-white w-96"
           />
 
           {/* Mobile Search Box */}

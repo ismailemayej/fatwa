@@ -7,11 +7,9 @@ import { toast } from "sonner";
 import { Delete } from "../DataAction/DataHandle";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 export function PopupModal({ item }: any) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const router = useRouter();
-
   const deleteItem = async (qn: number) => {
     try {
       await Delete("questions", qn);

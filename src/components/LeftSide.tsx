@@ -4,7 +4,7 @@ import { ScrollShadow } from "@nextui-org/react";
 
 const LeftSide = () => {
   return (
-    <div className="lg:block hidden border-gray-200 rounded-xl border-1 p-2 h-screen col-span-3 ">
+    <div className="lg:block hidden border-gray-200 rounded-xl h-screen col-span-3 ">
       <ScrollShadow
         hideScrollBar
         offset={100}

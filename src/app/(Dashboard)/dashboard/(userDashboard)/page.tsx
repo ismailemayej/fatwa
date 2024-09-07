@@ -6,7 +6,7 @@ const UserDashboard = async () => {
   const user = await userInformation();
   const { data } = await Get("questions", `useremail=${user?.email}`);
   return (
-    <div className="p-3 bg-white rounded-xl m-4">
+    <div className="p-3  bg-white rounded-xl m-4">
       {user?.name && <div>Your Name:{user?.name}</div>}
       {user?.email && <div> Your Email:{user?.email}</div>}
       {/* {user?.phone && <div> Your Mobile:{user?.phone}</div>} */}
@@ -19,7 +19,7 @@ const UserDashboard = async () => {
           alt="User Image"
         />
       )} */}
-      <div className=" bg-white p-3 m-3 rounded-xl shadow-xl grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
+      <div className="lg:p-3 mt-3 lg:m-3 rounded-xl shadow-xl grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
         {data.length > 0 ? (
           data.map((item: any) => (
             <div key={item._id} className="">

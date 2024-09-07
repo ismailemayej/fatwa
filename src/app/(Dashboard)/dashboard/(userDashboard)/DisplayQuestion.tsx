@@ -57,7 +57,7 @@ export default function DisplayQuestion({ allData }: any) {
   };
 
   return (
-    <Card className="max-w-[400px] h-72">
+    <Card className="h-72">
       <CardHeader className="">
         {allData.headline ? (
           <p className="overflow-hidden text-ellipsis line-clamp-2">

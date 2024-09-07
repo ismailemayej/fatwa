@@ -47,7 +47,7 @@ export default function ModalCommon({ button, body }: any) {
                 hideScrollBar
                 offset={100}
                 orientation="horizontal"
-                className="h-screen"
+                className="max-h-screen pt-20"
               >
                 <ModalBody>{body}</ModalBody>
               </ScrollShadow>

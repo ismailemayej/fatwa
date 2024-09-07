@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 const AuthRoutes = ["/login", "/register"];
 const roleBasedPrivateRoutes = {
   user: [/^\/dashboard$/, "/dashboard/edit", "/ask_question"],
-  driver: [/^\/dashboard\/driver$/],
   admin: [
     /^\/dashboard\/admin$/,
     "/dashboard/admin/users",
     "/dashboard/edit",
     "/dashboard/admin/pending",
+    "/dashboard/admin/answer",
     "/ask_question",
   ],
 };
