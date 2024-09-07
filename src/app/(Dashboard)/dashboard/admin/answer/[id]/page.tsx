@@ -12,7 +12,7 @@ const AnswerPage = async ({ params }: any) => {
       hideScrollBar
       offset={100}
       orientation="horizontal"
-      className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
+      className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen"
     >
       <EditQuestion data={data} />
     </ScrollShadow>

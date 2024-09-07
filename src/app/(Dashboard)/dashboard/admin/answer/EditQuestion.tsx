@@ -45,7 +45,7 @@ const EditQuestion = ({ data }: any) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 bangla text-xl bg-white m-3 p-3 rounded-xl lg:w-4/5 w-4/5 mx-auto">
+    <div className="flex flex-col gap-2 bangla text-xl bg-white p-3 rounded-xl lg:w-full w-4/5 mx-auto">
       {isPreview ? (
         <QuestionPreview data={formData} />
       ) : (

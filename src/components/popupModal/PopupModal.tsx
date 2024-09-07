@@ -1,15 +1,17 @@
 "use client";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Card } from "@nextui-org/react";
+import { Button, Card } from "@nextui-org/react";
 import { CircleCheck } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { Delete } from "../DataAction/DataHandle";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
 export function PopupModal({ item }: any) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const router = useRouter();
+
   const deleteItem = async (qn: number) => {
     try {
       await Delete("questions", qn);
@@ -57,12 +59,12 @@ export function PopupModal({ item }: any) {
             </div>
             <div className="flex w-full mx-auto">
               <Link href={`/dashboard/admin/answer/${item.qn}`}>
-                <button className="bg-blue-600 py-1 rounded-xl w-80 text-white">
+                <Button className="bg-blue-600 py-1 rounded-xl w-full text-white">
                   ঊত্তর প্রদান
-                </button>
+                </Button>
               </Link>
               <button
-                className="bg-blue-600 py-1 rounded-xl w-32 text-white"
+                className="bg-blue-600 py-1 rounded-xl w-1/5  text-white"
                 onClick={() => deleteItem(item.qn)}
               >
                 Delete
