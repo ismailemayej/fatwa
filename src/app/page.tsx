@@ -8,12 +8,10 @@ import PostCard from "@/components/PostCard";
 import RightSide from "@/components/RightSide";
 import { PostTabs } from "@/components/Tabs/PostTabs";
 import { ScrollShadow } from "@nextui-org/react";
-import { UserInfo } from "../components/DataAction/DataHandle";
+
 export default async function Home() {
   const data = await Get("questions", "approve=true");
-  const socialLogin = await UserInfo();
-  const custonLogin = await userInformation();
-  const user = socialLogin || custonLogin;
+  const user = await userInformation();
   return (
     <>
       <Navbar user={user} />
