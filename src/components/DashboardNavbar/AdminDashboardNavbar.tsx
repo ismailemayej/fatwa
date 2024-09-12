@@ -8,9 +8,7 @@ import { useAuth } from "@/lib/authContext";
 import { CircleUser } from "lucide-react";
 import Image from "next/image";
 import ProfileMenuOn from "../profileMenu/ProfileMenu";
-export default function AdminDashboardNavbar() {
-  const { user } = useAuth();
-
+export default function AdminDashboardNavbar({ user }: any) {
   return (
     <>
       <div className=" shadow-xl lg:text-black text-white bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 lg:px-3 px-2 py-3 w-full z-20 top-0 start-0">
@@ -55,6 +53,7 @@ export default function AdminDashboardNavbar() {
                     className="border-2 border-white rounded-full"
                   />
                 }
+                user={user}
               />
             </>
           ) : (

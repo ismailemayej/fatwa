@@ -54,6 +54,7 @@ export default function UserDashboardNavbar({ user }: any) {
                     className="border-2 border-white rounded-full"
                   />
                 }
+                user={user}
               />
             </>
           ) : (

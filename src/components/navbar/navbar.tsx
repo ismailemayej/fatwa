@@ -12,6 +12,7 @@ import SearchDesktop from "../searchBox/SearchDesktop";
 export default function Navbar({ user }: any) {
   const router = useRouter();
   const path = usePathname();
+
   useEffect(() => {
     if (path === "/") {
       router.refresh();
@@ -42,6 +43,26 @@ export default function Navbar({ user }: any) {
                   </Link>
                 </li>
               ))}
+              {user?.role === "admin" && (
+                <li className="my-1">
+                  <Link
+                    href="/dashboard/admin"
+                    className="flex items-center gap-2 hover:border-b-[3px]  hover:border-blue-100 hover:transition-all hover:px-2  hover:text-white"
+                  >
+                    <span className="text-sm font-medium">Admin Dashboard</span>
+                  </Link>
+                </li>
+              )}
+              {user?.role === "user" && (
+                <li className="my-1">
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-2 hover:border-b-[3px]  hover:border-blue-100 hover:transition-all hover:px-2  hover:text-white"
+                  >
+                    <span className="text-sm font-medium">Dashboard</span>
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
           {user?.email ? (
