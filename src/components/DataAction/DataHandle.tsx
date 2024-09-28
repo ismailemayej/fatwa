@@ -66,7 +66,8 @@ export const Get = async (name: any, querydata: any) => {
 };
 //  Update mehtod
 export const Update = async (data: any, name: any, id: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
+  console.log("console data", data, name, id);
+  const res = await fetch(`http://localhost:5000/api/v1/${name}/${id}`, {
     cache: "no-store",
     method: "PUT",
     headers: {
