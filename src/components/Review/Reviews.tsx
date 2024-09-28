@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { FaThumbsUp, FaShareAlt } from "react-icons/fa";
-import { AiOutlineLike } from "react-icons/ai";
+import { FaShareAlt } from "react-icons/fa";
+
 import { BiSolidLike } from "react-icons/bi";
+import { SlLike } from "react-icons/sl";
 import { toast } from "sonner";
 import { Update } from "../DataAction/DataHandle";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Divider } from "@nextui-org/react";
+import { ScrollShadow } from "@nextui-org/react";
 import ModalCommon from "../Modal/Modal";
 import CommentProfile from "../commentProfile";
 
@@ -113,7 +114,7 @@ const Reviews = ({ post, user }: { post: Post; user: any }) => {
                 className="text-white flex gap-2 items-center rounded-xl px-2 py-1"
                 disabled={hasLiked}
               >
-                {likes} <AiOutlineLike className="size-8" />
+                {likes} <SlLike className="size-6" />
               </button>
             )}
 
@@ -152,12 +153,33 @@ const Reviews = ({ post, user }: { post: Post; user: any }) => {
 
       {/* Render Comments */}
       <div className="mt-4 line-clamp-3">
+        {}
         {comments &&
           comments.map((comment: any) => <CommentProfile comment={comment} />)}
       </div>
-      <div className="text-center">
-        <ModalCommon button="See all Comments" body="hello" />
-      </div>
+      {comments?.length > 3 && (
+        <div className="text-center">
+          <ModalCommon
+            button="See all Comments"
+            body={
+              <>
+                <div className="text-center">All Comments</div>
+                <ScrollShadow
+                  hideScrollBar
+                  offset={100}
+                  orientation="horizontal"
+                  className=" border-t-gray-300 border-2 shadow-2xl rounded-xl  h-screen col-span-6 p-2"
+                >
+                  {comments &&
+                    comments.map((comment: any, index: number) => (
+                      <CommentProfile key={index} comment={comment} />
+                    ))}
+                </ScrollShadow>
+              </>
+            }
+          />
+        </div>
+      )}
     </div>
   );
 };
