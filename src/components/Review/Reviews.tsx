@@ -155,7 +155,9 @@ const Reviews = ({ post, user }: { post: Post; user: any }) => {
       <div className="mt-4 line-clamp-3">
         {}
         {comments &&
-          comments.map((comment: any) => <CommentProfile comment={comment} />)}
+          comments.map((comment, index: any) => (
+            <CommentProfile key={index} comment={comment} />
+          ))}
       </div>
       {comments?.length > 3 && (
         <div className="text-center">
